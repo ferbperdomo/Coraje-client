@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    align-items: end;
+}
+.nav-link{
+    text-decoration: none;
+}
