@@ -56,7 +56,7 @@ function SignUpForm({ closeModal }) {
         e.preventDefault()
 
         authService
-            .signup({ ...signupForm, role })
+            .signup({ ...signupForm, role: "USER" })
             .then(() => {
                 navigate('/')
                 closeModal()

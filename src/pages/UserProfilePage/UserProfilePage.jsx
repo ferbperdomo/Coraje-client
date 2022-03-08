@@ -15,10 +15,8 @@ const UserProfilePage = () => {
     const navigate = useNavigate()
     const [userDetails, setUserDetails] = useState({})
     const [isMyFriend, setIsMyFriend] = useState(false)
-    const [userInfoUpdated, setUserInfoUpdated] = useState(false)
 
     useEffect(() => {
-        console.log('Hello')
         setIsMyFriend(false)
         loadUserInfo()
     }, [id])

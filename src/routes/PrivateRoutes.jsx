@@ -12,7 +12,7 @@ function PrivateRoute() {
     }
 
     if (!isLoggedIn) {
-        return <Navigate to="/inicio-sesion" />
+        return <Navigate to="/" />
     }
 
     return <Outlet />

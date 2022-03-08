@@ -5,7 +5,6 @@ import PlaceFormPage from '../pages/PlaceFormPage/PlaceFormPage'
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage'
 import PlaceDetailsPage from '../pages/PlaceDetailsPage/PlaceDetailsPage'
 import PrivateRoute from './PrivateRoutes'
-// import PrivateRoute from './PrivateRoutes'
 import UserListPage from '../pages/UsersListPage/UserListPage'
 
 
