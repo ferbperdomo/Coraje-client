@@ -22,7 +22,7 @@ class ReviewsService {
     }
 
     getAllReviews = () => {
-        return this.api.get('/')
+        return this.api.get(`/${place}`)
     }
 
     updateReview = (place, id) => {
