@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadService from "../../services/upload.service"
 import placesService from "../../services/places.service"
 import { useNavigate } from 'react-router-dom'
 import Geocode from "react-geocode"
-import GooglePlacesAutocomplete from "react-google-autocomplete"
+// import GooglePlacesAutocomplete from "react-google-autocomplete"
+import { MessageContext } from './../../context/userMessage.context'
 Geocode.setApiKey(`${process.env.REACT_APP_MAPS_API_KEY}`)
 Geocode.setLanguage("es")
 Geocode.setRegion("es")
@@ -20,6 +21,7 @@ function CreatePlaceForm() {
         description: "",
         locationText: ""
     })
+    const { setShowMessage, setMessageInfo } = useContext(MessageContext)
 
     const [placeGeolocation, setPlaceGeolocation] = useState({ lat: "", lng: "" })
 
@@ -76,7 +78,11 @@ function CreatePlaceForm() {
 
         placesService
             .createOnePlace({ name, type, url, description, lat, lng, image })
-            .then(() => navigate('/'))
+            .then(() => {
+                setShowMessage(true)
+                setMessageInfo({ title: 'Éxito', body: 'Se ha creado el lugar exitosamente' })
+                navigate('/')
+            })
             .catch(err => console.log(err))
     }
 
