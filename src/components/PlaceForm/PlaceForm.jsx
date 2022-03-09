@@ -41,7 +41,7 @@ function CreatePlaceForm() {
         })
     }
 
-    const uploadProfileImage = e => {
+    const uploadPlaceImage = e => {
 
         const uploadData = new FormData()
         uploadData.append('imageData', e.target.files[0])
@@ -109,7 +109,7 @@ function CreatePlaceForm() {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Sube una imagen del local</Form.Label>
-                        <Form.Control type="file" onChange={uploadProfileImage} />
+                        <Form.Control type="file" onChange={uploadPlaceImage} />
                     </Form.Group>
                     <Button variant="primary" type="submit" disabled={loadingImage}>
                         {loadingImage ? 'Rellena los datos :)' : 'Completar registro'}

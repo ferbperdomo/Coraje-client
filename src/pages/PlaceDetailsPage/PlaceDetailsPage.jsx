@@ -3,9 +3,12 @@ import placesService from "../../services/places.service"
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
 import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Collapse } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import usersService from "../../services/users.service"
+import ReviewForm from "../../components/ReviewForm/ReviewForm"
+import reviewsService from "../../services/review.service"
+import ReviewCard from '../../components/ReviewCard/ReviewCard'
 
 
 const PlaceDetailsPage = () => {
@@ -14,20 +17,40 @@ const PlaceDetailsPage = () => {
     const handleModalClose = () => setShowModal(false)
     const handleModalOpen = () => setShowModal(true)
 
+    const [openReview, setOpenReview] = useState(false)
+    const handleTransClose = () => setOpenReview(false)
+    const handleTransOpen = () => setOpenReview(true)
+
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const { id } = useParams()
 
     const [placeDetails, setPlaceDetails] = useState({})
+    const [reviews, setReviews] = useState([])
     const { name, type, description, image, location, url } = placeDetails
 
     useEffect(() => {
+        loadPlace()
+        loadReviews()
+    }, [])
+
+    const loadPlace = () => {
         placesService
             .getOnePlace(id)
             .then(({ data }) => setPlaceDetails(data))
             .catch(err => console.log(err))
-    }, [])
-    
+    }
+
+    const loadReviews = () => {
+        reviewsService
+            .getAllReviews(id)
+            .then(({ data }) => {
+                console.log(data)
+                setReviews(data)
+            })
+            .catch(err => console.log(err))
+    }
+
     const handleAddFavPlace = () => {
         usersService
             .addOnePlace(id)
@@ -55,6 +78,18 @@ const PlaceDetailsPage = () => {
             <Link to='#' onClick={handleModalOpen}>
                 <Button>Editar información</Button>
             </Link>
+
+            <Button onClick={handleTransOpen} > Añadir opinión </Button>
+
+            {
+                reviews.map(review => <ReviewCard review={review} />)
+            }
+
+            <Collapse in={openReview}>
+                <div id="example-collapse-text">
+                    <ReviewForm closeReview={handleTransClose} />
+                </div>
+            </Collapse>
 
 
             <Modal show={showModal} onHide={handleModalClose} size="lg">

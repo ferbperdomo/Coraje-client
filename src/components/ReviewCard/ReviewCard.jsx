@@ -1,19 +1,21 @@
-const ReviewCard = () => {
+import { Card } from 'react-bootstrap'
 
-    const { username, text, rating, date } = reviewInfo
+const ReviewCard = ({ review }) => {
 
+
+    console.log(review)
     return (
         <article className="review">
             <Card>
-                <Card.Header>{username}</Card.Header>
+                <Card.Header>{review.username}</Card.Header>
                 <Card.Body>
                     <blockquote className="review-text">
                         <p>
-                            {' '}{text}{' '}
-                            {rating}
+                            {' '}{review.text}{' '}
+                            {review.rating}
                         </p>
                         <footer className="review-date">
-                            {date}
+                            {review.date}
                         </footer>
                     </blockquote>
                 </Card.Body>
@@ -21,6 +23,8 @@ const ReviewCard = () => {
         </article>
     )
 }
+
+export default ReviewCard
 
 
 

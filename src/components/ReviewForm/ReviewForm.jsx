@@ -1,24 +1,20 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import reviewsService from "../../services/review.service"
-import { Card } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 
-const ReviewForm = () => {
-
-    // el :place de useParams() ??
-    // el username de req.payload ?
+const ReviewForm = ({ closeReview }) => {
 
     const [reviewInfo, setReviewInfo] = useState({
-        username: "",
-        place: "",
         text: "",
         rating: 0,
         date: ""
     })
 
-    const { username, place, text, rating, date } = reviewInfo
+    const { text, rating } = reviewInfo
 
     const navigate = useNavigate()
+    const { id } = useParams()
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -34,8 +30,11 @@ const ReviewForm = () => {
         e.preventDefault()
 
         reviewsService
-            .createReview({ username, place, text, rating, date })
-            .then(() => navigate('/'))
+            .createReview(id, { text, rating })
+            .then(() => {
+                navigate(`/detalles/${id}`)
+                closeReview()
+            })
             .catch(err => console.log(err))
     }
     return (

@@ -17,11 +17,11 @@ class ReviewsService {
         })
     }
 
-    createReview = place => {
-        return this.api.get(`/${place}/create-review`)
+    createReview = (place, reviewData) => {
+        return this.api.post(`/${place}/create-review`, reviewData)
     }
 
-    getAllReviews = () => {
+    getAllReviews = place => {
         return this.api.get(`/${place}`)
     }
 
@@ -29,10 +29,11 @@ class ReviewsService {
         return this.api.put(`/${place}/${id}/update-review`)
     }
 
-    deleteReview = () => {
+    deleteReview = id => {
         return this.api.delete(`/${id}/delete-review`)
     }
 }
+
 const reviewsService = new ReviewsService()
 
 export default reviewsService
