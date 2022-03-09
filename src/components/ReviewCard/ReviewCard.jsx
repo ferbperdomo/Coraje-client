@@ -1,18 +1,23 @@
-import { Card, Button, Collapse } from 'react-bootstrap'
-import EditReviewForm from "../../components/EditReviewForm/EditReviewForm"
-import { Link } from 'react-router-dom'
+import { Card, Button } from 'react-bootstrap'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import reviewsService from '../../services/review.service'
 
 
-<<<<<<< HEAD
-const ReviewCard = ({ review, loadReviews }) => {
+const ReviewCard = ({ review, loadReviews, placeId }) => {
 
-    const [openReviewEditor, setOpenReviewEditor] = useState(false)
-    const handleTransEditorClose = () => setOpenReviewEditor(false)
-    const handleTransEditorOpen = () => setOpenReviewEditor(true)
+    const navigate = useNavigate()
 
-=======
->>>>>>> f57205faf5e0941849bd1e9ec129f12bd71abb73
+    const deleteReview = (_id) => {
+        reviewsService
+            .deleteReview(review._id)
+            .then(() => {
+                loadReviews()
+                navigate(`/detalles/${placeId}`)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <article className="review" >
             <Card>
@@ -28,15 +33,10 @@ const ReviewCard = ({ review, loadReviews }) => {
                         </footer>
                     </blockquote>
                 </Card.Body>
-                <Link to='#' onClick={handleTransEditorOpen}>
-                    <Button>Editar comentario</Button>
+                <Link to='#' onClick={deleteReview}>
+                    <Button>Eliminar comentario</Button>
                 </Link>
             </Card>
-            <Collapse in={openReviewEditor}>
-                <div id="example-collapse-text">
-                    <EditReviewForm closeReview={handleTransEditorClose} loadReviews={loadReviews} />
-                </div>
-            </Collapse>
         </article>
     )
 }

@@ -1,13 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
-<<<<<<< HEAD
-import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
 import { Button, Modal, Collapse, Container, Row } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
-=======
-import { Button, Modal, Collapse, Row, Container } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
->>>>>>> f57205faf5e0941849bd1e9ec129f12bd71abb73
 import usersService from "../../services/users.service"
 import placesService from "../../services/places.service"
 import reviewsService from "../../services/review.service"
@@ -75,6 +69,13 @@ const PlaceDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+    const handleRemoveFavPlace = () => {
+        usersService
+            .removeOnePlace(id)
+            .then(() => navigate(`/perfil/${user._id}`))
+            .catch(err => console.log(err))
+    }
+
     const handleDeleteFavPlace = () => {
         placesService
             .deleteOnePlace(id)
@@ -82,12 +83,6 @@ const PlaceDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const handleRemoveFavPlace = () => {
-        usersService
-            .removeOnePlace(id)
-            .then(() => navigate(`/perfil/${user._id}`))
-            .catch(err => console.log(err))
-    }
 
     return (
         <>
@@ -126,7 +121,7 @@ const PlaceDetailsPage = () => {
                                     </div>
                                 </Collapse>
                                 {
-                                    reviews.map(review => <ReviewCard review={review} key={review._id} loadReviews={loadReviews} />)
+                                    reviews.map(review => <ReviewCard review={review} key={review._id} loadReviews={loadReviews} placeId={id} />)
                                 }
                             </>
                     }

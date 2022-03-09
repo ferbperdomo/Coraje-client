@@ -3,6 +3,7 @@ import { LoadMap } from '../../components/Map/LoadMap'
 import placesService from '../../services/places.service'
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import CreatePlaceForm from "../../components/PlaceForm/PlaceForm"
 
 const IndexPage = () => {
     const [places, setPlaces] = useState([])
@@ -58,6 +59,7 @@ const IndexPage = () => {
                 }
             </>
         </Container>
+
     )
 }
 

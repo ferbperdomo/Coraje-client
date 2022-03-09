@@ -4,6 +4,7 @@ import uploadService from "../../services/upload.service"
 import placesService from "../../services/places.service"
 import { useNavigate } from 'react-router-dom'
 import Geocode from "react-geocode"
+import GooglePlacesAutocomplete from "react-google-autocomplete"
 Geocode.setApiKey(`${process.env.REACT_APP_MAPS_API_KEY}`)
 Geocode.setLanguage("es")
 Geocode.setRegion("es")
@@ -69,8 +70,6 @@ function CreatePlaceForm() {
         )
     }
 
-
-
     function handleSubmit(e) {
 
         e.preventDefault()
@@ -108,21 +107,11 @@ function CreatePlaceForm() {
                     <Form.Group className="mb-3">
                         <Form.Label>Añade la ubicación</Form.Label>
                         <Form.Control type="text" name="locationText" value={locationText} onChange={handleInputChange} />
-                        {/* <GooglePlacesAutocomplete
-                            placeholder="Search"
-                            query={{
-                                key: process.env.REACT_APP_MAPS_API_KEY,
-                                language: 'es'
-                            }}
-                            onPress={(data, details = null) => console.log(data)}
-                            onFail={(error) => console.error(error)}
-                            requestUrl={{
-                                url:
-                                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
-                                useOnPlatform: 'web',
-                            }} // this in only required for use on the web. See https://git.io/JflFv more for details.
-                        /> */}
                     </Form.Group>
+                    {/* <GooglePlacesAutocomplete
+                            apiKey={process.env.REACT_APP_MAPS_API_KEY}
+                            selectProps={{ name: "locationText", value: locationText, onChange: handleInputChange, type: "text" }}
+                        /> */}
                     <Form.Group className="mb-3">
                         <Form.Label>Sube una imagen del local</Form.Label>
                         <Form.Control type="file" onChange={uploadPlaceImage} />
@@ -132,7 +121,7 @@ function CreatePlaceForm() {
                     </Button>
                 </Form>
             </Col>
-        </Row>
+        </Row >
 
     )
 }

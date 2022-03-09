@@ -29,10 +29,6 @@ class ReviewsService {
         return this.api.get(`/${id}`)
     }
 
-    updateReview = (place, id) => {
-        return this.api.put(`/${place}/${id}/update-review`)
-    }
-
     deleteReview = id => {
         return this.api.delete(`/${id}/delete-review`)
     }
