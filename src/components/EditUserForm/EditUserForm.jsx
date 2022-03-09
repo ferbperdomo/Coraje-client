@@ -50,7 +50,7 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
         uploadService
             .uploadImage(uploadData)
             .then(({ data }) => {
-                setUserInfo({ ...userInfo, image: data.cloudinary_url })
+                setUserInfo({ ...userInfo, profileImg: data.cloudinary_url })
                 setLoadingimage(false)
 
             })
@@ -62,7 +62,7 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
         e.preventDefault()
 
         usersService
-            .updateOneUser(id, { username, email, profileImg, description }, { new: true })
+            .updateOneUser(id, { username, email, profileImg, description })
             .then(({ data }) => {
                 loadUserInfo()
                 console.log(data)
@@ -87,7 +87,7 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
 
                     {/* <Form.Group className="mb-3">
                         <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" value={password} onChange={handleInputChange} />
+                        <Form.Control type="password" name="password" value={password} onChange={handlePasswordChange} />
                     </Form.Group> */}
 
                     <Form.Group className="mb-3">

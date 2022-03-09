@@ -3,7 +3,7 @@ import placesService from "../../services/places.service"
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
 import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Container, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import usersService from "../../services/users.service"
 
@@ -19,43 +19,73 @@ const PlaceDetailsPage = () => {
     const { id } = useParams()
 
     const [placeDetails, setPlaceDetails] = useState({})
-    const { name, type, description, image, location, url } = placeDetails
-
+    const { name, type, description, image, location, url, owner } = placeDetails
     useEffect(() => {
         placesService
             .getOnePlace(id)
             .then(({ data }) => setPlaceDetails(data))
             .catch(err => console.log(err))
     }, [])
-    
+
     const handleAddFavPlace = () => {
         usersService
             .addOnePlace(id)
             .then(() => navigate(`/perfil/${user._id}`))
             .catch(err => console.log(err))
     }
+    const handleDeleteFavPlace = () => {
+        placesService
+            .deleteOnePlace(id)
+            .then(() => navigate('/'))
+            .catch(err => console.log(err))
+    }
 
     return (
         <>
-            <article className="placeDetails">
+            <Container>
+                <Row>
 
-                <img className="placeimg" src={image} />
-                <a href={`/perfil/${user?._id}`}>Volver</a>
-                <h1>{name}</h1>
-                <p>{type}</p>
-                <p>{description}</p>
+                    {
+                        user?._id === owner || user?.role === "ADMIN" ?
+                            <>
+                                <article className="placeDetails">
 
-                <a href={url}>Página web</a>
-                {/* Modificar el enlace para que no recargue la página */}
+                                    <img className="placeimg" src={image} />
+                                    <hr />
+                                    <Link to={`/perfil/${user?._id}`}>Volver</Link>
+                                    <h1>{name}</h1>
+                                    <p>{type}</p>
+                                    <p>{description}</p>
+                                    <a href={url}>Página web</a>
 
-            </article>
-            <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Agregar lugar a favoritos</Button>
+                                </article>
+                                <Link to='#' onClick={handleModalOpen}>
+                                    <Button>Editar información</Button>
+                                </Link>
+                                <Button variant="danger" type="submit" value="Submit" onClick={handleDeleteFavPlace}>Eliminar lugar</Button>
 
+                            </>
+                            :
+                            <>
+                                <article className="placeDetails">
 
-            <Link to='#' onClick={handleModalOpen}>
-                <Button>Editar información</Button>
-            </Link>
+                                    <img className="placeimg" src={image} />
+                                    <hr />
+                                    <Link to={`/perfil/${user?._id}`}>Volver</Link>
+                                    <h1>{name}</h1>
+                                    <p>{type}</p>
+                                    <p>{description}</p>
+                                    <a href={url}>Página web</a>
 
+                                </article>
+
+                                <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Agregar lugar a favoritos</Button>
+                            </>
+                    }
+
+                </Row>
+
+            </Container>
 
             <Modal show={showModal} onHide={handleModalClose} size="lg">
                 <Modal.Header closeButton>

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { Form, Button, Row, Col, ToggleButton } from 'react-bootstrap'
+import { Form, Button, Row, Col, } from 'react-bootstrap'
 import authService from "../../services/auth.service"
 import uploadService from "../../services/upload.service"
 
@@ -11,14 +11,13 @@ function SignUpForm({ closeModal }) {
         password: "",
         email: "",
         profileImg: "",
-        description: ""
+        description: "",
+        role: ""
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
-    const [owner, setOwner] = useState({ role: "", isOwner: false })
 
-    const { username, password, email, description } = signupForm
-    const { role, isOwner } = owner
+    const { username, password, email, description, role } = signupForm
 
     const navigate = useNavigate()
 
@@ -27,13 +26,6 @@ function SignUpForm({ closeModal }) {
         setSignupForm({ ...signupForm, [name]: value })
     }
 
-    const handleCheckbox = e => {
-        const { name, checked } = e.target
-
-        if (checked) {
-            setOwner({ role: "OWNER", [name]: true })
-        }
-    }
     const uploadProfileImage = e => {
 
         setLoadingImage(true)
@@ -56,7 +48,7 @@ function SignUpForm({ closeModal }) {
         e.preventDefault()
 
         authService
-            .signup({ ...signupForm, role: "USER" })
+            .signup({ ...signupForm })
             .then(() => {
                 navigate('/')
                 closeModal()
@@ -99,18 +91,13 @@ function SignUpForm({ closeModal }) {
                         <Form.Control type="file" name="profileImg" onChange={uploadProfileImage} />
                     </Form.Group>
 
-                    <ToggleButton
-                        id="checkbox"
-                        type="checkbox"
-                        variant={isOwner ? 'outline-success' : 'outline-danger'}
-                        className="mb-3"
-                        name="isOwner"
-                        checked={isOwner}
-                        onChange={handleCheckbox}
-                    >
-                        ¿Eres dueñx de un local?
-                    </ToggleButton>
-
+                    <Form.Select type="text" name="role"
+                        vale={role} onChange={handleInputChange}
+                        className="mb-3">
+                        <option>¿Cual es tu rol?</option>
+                        <option value="USER">Usuarix</option>
+                        <option value="OWNER">Propietarix</option>
+                    </Form.Select>
 
                     <div className="d-grid gap-2">
                         <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Espere...' : 'Completar registro'}</Button>
