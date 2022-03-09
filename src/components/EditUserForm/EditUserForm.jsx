@@ -85,11 +85,6 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
                         <Form.Control type="email" name="email" value={email} onChange={handleInputChange} />
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3">
-                        <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" value={password} onChange={handlePasswordChange} />
-                    </Form.Group> */}
-
                     <Form.Group className="mb-3">
                         <Form.Label>Descripción</Form.Label>
                         <Form.Control as="textarea" name="description" value={description} onChange={handleInputChange} />

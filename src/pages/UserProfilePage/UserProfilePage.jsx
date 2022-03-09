@@ -7,6 +7,7 @@ import UserCard from "../../components/UserCard/UserCard"
 import PlacesCard from '../../components/PlacesCard/PlacesCard'
 import FriendsCard from '../../components/FriendsCard/FriendsCard'
 import EditUserForm from '../../components/EditUserForm/EditUserForm'
+import CreatePlaceForm from "../../components/PlaceForm/PlaceForm"
 
 const UserProfilePage = () => {
 
@@ -15,6 +16,14 @@ const UserProfilePage = () => {
     const navigate = useNavigate()
     const [userDetails, setUserDetails] = useState({})
     const [isMyFriend, setIsMyFriend] = useState(false)
+
+    const [showModal, setShowModal] = useState(false)
+    const handleModalClose = () => setShowModal(false)
+    const handleModalOpen = () => setShowModal(true)
+
+    const [showRegisterModal, setShowRegisterModal] = useState(false)
+    const handleRegisterModalClose = () => setShowRegisterModal(false)
+    const handleRegisterModalOpen = () => setShowRegisterModal(true)
 
     useEffect(() => {
         setIsMyFriend(false)
@@ -25,9 +34,6 @@ const UserProfilePage = () => {
         checkFriendship()
     }, [userDetails])
 
-    const [showModal, setShowModal] = useState(false)
-    const handleModalClose = () => setShowModal(false)
-    const handleModalOpen = () => setShowModal(true)
     const { favPlaces, friends } = userDetails
 
     const checkFriendship = () => {
@@ -41,7 +47,6 @@ const UserProfilePage = () => {
             .getOneUser(id)
             .then(({ data }) => {
                 setUserDetails(data)
-                console.log(userDetails)
             })
             .catch(err => console.log(err))
     }
@@ -80,6 +85,7 @@ const UserProfilePage = () => {
                                     <Button>Editar información</Button>
                                 </Link>
                                 {user?.role === "ADMIN" && <Button variant="dark" type="submit" value="Submit" onClick={handleDeleteUser}>Eliminar usuario</Button>}
+                                {user?.role === "OWNER" && <Button variant="success" type="submit" value="Submit" onClick={handleRegisterModalOpen}>Añadir local</Button>}
 
                             </>
                             :
@@ -115,6 +121,14 @@ const UserProfilePage = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <EditUserForm closeModal={handleModalClose} loadUserInfo={loadUserInfo} />
+                </Modal.Body>
+            </Modal>
+            <Modal show={showRegisterModal} onHide={handleRegisterModalClose} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Registrar local</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <CreatePlaceForm closeModal={handleRegisterModalClose} />
                 </Modal.Body>
             </Modal>
         </>

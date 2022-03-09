@@ -2,8 +2,6 @@ import { Card } from 'react-bootstrap'
 
 const ReviewCard = ({ review }) => {
 
-
-    console.log(review)
     return (
         <article className="review">
             <Card>

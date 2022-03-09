@@ -1,4 +1,5 @@
 import { Card } from 'react-bootstrap'
+import './UserCard.css'
 
 const UserCard = ({ userInfo }) => {
     const { username, description, role, profileImg } = userInfo

@@ -1,8 +1,7 @@
-import { useContext } from "react"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useContext } from "react"
 import authService from "../../services/auth.service"
 import { AuthContext } from "./../../context/auth.context"
+import { MessageContext } from './../../context/userMessage.context'
 import { Button, Row, Col, Form } from 'react-bootstrap'
 
 function LoginForm({ closeModal }) {
@@ -12,7 +11,7 @@ function LoginForm({ closeModal }) {
         email: ""
     })
 
-    const navigate = useNavigate()
+    const { setShowMessage, setMessageInfo } = useContext(MessageContext)
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
 
@@ -30,10 +29,15 @@ function LoginForm({ closeModal }) {
             .then(({ data }) => {
                 storeToken(data.authToken)
                 authenticateUser()
-                navigate('/')
+                setShowMessage(true)
+                setMessageInfo({ title: 'Éxito', body: 'Sesión iniciada correctamente' })
                 closeModal()
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err.response)
+                setShowMessage(true)
+                setMessageInfo({ title: 'Atención', body: err.response.data.message })
+            })
     }
 
     return (

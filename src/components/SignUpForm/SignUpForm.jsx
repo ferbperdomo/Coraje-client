@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Form, Button, Row, Col, } from 'react-bootstrap'
 import authService from "../../services/auth.service"
 import uploadService from "../../services/upload.service"
+import { MessageContext } from './../../context/userMessage.context'
 
 function SignUpForm({ closeModal }) {
 
@@ -15,6 +16,7 @@ function SignUpForm({ closeModal }) {
         role: ""
     })
 
+    const { setShowMessage, setMessageInfo } = useContext(MessageContext)
     const [loadingImage, setLoadingImage] = useState(false)
 
     const { username, password, email, description, role } = signupForm
@@ -50,10 +52,16 @@ function SignUpForm({ closeModal }) {
         authService
             .signup({ ...signupForm })
             .then(() => {
+                setShowMessage(true)
+                setMessageInfo({ title: 'Atención', body: "Cuenta creada con éxito. Ahora inicia sesión" })
                 navigate('/')
                 closeModal()
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err.response)
+                setShowMessage(true)
+                setMessageInfo({ title: 'Atención', body: err.response.data.message })
+            })
     }
 
     return (
