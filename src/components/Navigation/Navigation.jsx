@@ -58,6 +58,9 @@ const Navigation = () => {
                                         <NavLink to='/resultados-busqueda-usuarixs'>
                                             <Nav.Link as="span">Buscar amigxs</Nav.Link>
                                         </NavLink>
+                                        {/* <NavLink to='/resultados-busqueda-usuarixs'>
+                                            <Nav.Link as="span">Cambiar contraseña</Nav.Link>
+                                        </NavLink> */}
 
                                         <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
                                     </>

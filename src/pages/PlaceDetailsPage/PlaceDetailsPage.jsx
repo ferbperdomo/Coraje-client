@@ -27,8 +27,8 @@ const PlaceDetailsPage = () => {
 
     const [placeDetails, setPlaceDetails] = useState({})
     const [reviews, setReviews] = useState([])
-    const { name, type, description, image, location, url } = placeDetails
 
+    const { name, type, description, image, location, url, owner } = placeDetails
     useEffect(() => {
         loadPlace()
         loadReviews()
@@ -57,6 +57,12 @@ const PlaceDetailsPage = () => {
             .then(() => navigate(`/perfil/${user._id}`))
             .catch(err => console.log(err))
     }
+    const handleDeleteFavPlace = () => {
+        placesService
+            .deleteOnePlace(id)
+            .then(() => navigate('/'))
+            .catch(err => console.log(err))
+    }
 
     return (
         <>
@@ -79,18 +85,47 @@ const PlaceDetailsPage = () => {
                 <Button>Editar información</Button>
             </Link>
 
-            <Button onClick={handleTransOpen} > Añadir opinión </Button>
+            <Container>
+                <Row>
 
-            {
-                reviews.map(review => <ReviewCard review={review} />)
-            }
+                    <article className="placeDetails">
 
-            <Collapse in={openReview}>
-                <div id="example-collapse-text">
-                    <ReviewForm closeReview={handleTransClose} />
-                </div>
-            </Collapse>
+                        <img className="placeimg" src={image} />
+                        <hr />
+                        <Link to={`/perfil/${user?._id}`}>Volver</Link>
+                        <h1>{name}</h1>
+                        <p>{type}</p>
+                        <p>{description}</p>
+                        <a href={url}>Página web</a>
 
+                    </article>
+                    {
+                        user?._id === owner || user?.role === "ADMIN" ?
+                            <>
+                                <Link to='#' onClick={handleModalOpen}>
+                                    <Button>Editar información</Button>
+                                </Link>
+                                <Button variant="danger" type="submit" value="Submit" onClick={handleDeleteFavPlace}>Eliminar lugar</Button>
+
+                            </>
+                            :
+                            <>
+
+                                <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Agregar lugar a favoritos</Button>
+
+
+                                <Button onClick={handleTransOpen} > Añadir opinión </Button>
+
+                                {
+                                    reviews.map(review => <ReviewCard review={review} />)
+                                }
+
+                            </>
+                    }
+
+                </Row>
+
+            </Container>
 
             <Modal show={showModal} onHide={handleModalClose} size="lg">
                 <Modal.Header closeButton>
@@ -100,6 +135,13 @@ const PlaceDetailsPage = () => {
                     <EditPlaceForm closeModal={handleModalClose} />
                 </Modal.Body>
             </Modal>
+
+            <Collapse in={openReview}>
+                <div id="example-collapse-text">
+                    <ReviewForm closeReview={handleTransClose} />
+                </div>
+            </Collapse>
+
 
         </>
 

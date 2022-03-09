@@ -15,10 +15,8 @@ const UserProfilePage = () => {
     const navigate = useNavigate()
     const [userDetails, setUserDetails] = useState({})
     const [isMyFriend, setIsMyFriend] = useState(false)
-    const [userInfoUpdated, setUserInfoUpdated] = useState(false)
 
     useEffect(() => {
-        console.log('Hello')
         setIsMyFriend(false)
         loadUserInfo()
     }, [id])
@@ -62,24 +60,33 @@ const UserProfilePage = () => {
             .catch(err => console.log(err))
     }
 
+    const handleDeleteUser = () => {
+        usersService
+            .deleteUser(id)
+            .then(() => navigate(`/perfil/${user._id}`))
+            .catch(err => console.log(err))
+    }
+
     return (
         <>
 
             <Container className="userContainer">
                 <Row>
                     {
-                        user?._id != id ?
-                            <>
-                                <UserCard userInfo={userDetails} />
-                                {isMyFriend || <Button variant="primary" type="submit" value="Submit" onClick={handleAddFriend}>Agregar amigo</Button>}
-                                {isMyFriend && <Button variant="danger" type="submit" value="Submit" onClick={handleRemoveFriend}>Eliminar amigo</Button>}
-                            </>
-                            :
+                        user?._id === id || user?.role === "ADMIN" ?
                             <>
                                 <UserCard userInfo={userDetails} />
                                 <Link to='#' onClick={handleModalOpen}>
                                     <Button>Editar información</Button>
                                 </Link>
+                                {user?.role === "ADMIN" && <Button variant="dark" type="submit" value="Submit" onClick={handleDeleteUser}>Eliminar usuario</Button>}
+
+                            </>
+                            :
+                            <>
+                                <UserCard userInfo={userDetails} />
+                                {isMyFriend || <Button variant="primary" type="submit" value="Submit" onClick={handleAddFriend}>Agregar amigo</Button>}
+                                {isMyFriend && <Button variant="danger" type="submit" value="Submit" onClick={handleRemoveFriend}>Eliminar amigo</Button>}
                             </>
                     }
                 </Row>
@@ -104,7 +111,7 @@ const UserProfilePage = () => {
 
             <Modal show={showModal} onHide={handleModalClose} size="lg">
                 <Modal.Header closeButton>
-                    <Modal.Title>Editar información de tu establecimiento</Modal.Title>
+                    <Modal.Title>Editar información</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <EditUserForm closeModal={handleModalClose} loadUserInfo={loadUserInfo} />
