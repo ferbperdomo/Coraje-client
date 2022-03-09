@@ -3,7 +3,7 @@ import placesService from "../../services/places.service"
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
 import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
-import { Button, Modal, Collapse } from 'react-bootstrap'
+import { Button, Modal, Collapse, Container, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import usersService from "../../services/users.service"
 import ReviewForm from "../../components/ReviewForm/ReviewForm"
@@ -44,10 +44,7 @@ const PlaceDetailsPage = () => {
     const loadReviews = () => {
         reviewsService
             .getAllReviews(id)
-            .then(({ data }) => {
-                console.log(data)
-                setReviews(data)
-            })
+            .then(({ data }) => setReviews(data))
             .catch(err => console.log(err))
     }
 
@@ -57,6 +54,7 @@ const PlaceDetailsPage = () => {
             .then(() => navigate(`/perfil/${user._id}`))
             .catch(err => console.log(err))
     }
+
     const handleDeleteFavPlace = () => {
         placesService
             .deleteOnePlace(id)
@@ -66,24 +64,6 @@ const PlaceDetailsPage = () => {
 
     return (
         <>
-            <article className="placeDetails">
-
-                <img className="placeimg" src={image} />
-                <a href={`/perfil/${user?._id}`}>Volver</a>
-                <h1>{name}</h1>
-                <p>{type}</p>
-                <p>{description}</p>
-
-                <a href={url}>Página web</a>
-                {/* Modificar el enlace para que no recargue la página */}
-
-            </article>
-            <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Agregar lugar a favoritos</Button>
-
-
-            <Link to='#' onClick={handleModalOpen}>
-                <Button>Editar información</Button>
-            </Link>
 
             <Container>
                 <Row>
@@ -116,13 +96,16 @@ const PlaceDetailsPage = () => {
 
                                 <Button onClick={handleTransOpen} > Añadir opinión </Button>
 
+                                <Collapse in={openReview}>
+                                    <div id="example-collapse-text">
+                                        <ReviewForm closeReview={handleTransClose} loadReviews={loadReviews} />
+                                    </div>
+                                </Collapse>
                                 {
-                                    reviews.map(review => <ReviewCard review={review} />)
+                                    reviews.map(review => <ReviewCard review={review} key={review._id} loadReviews={loadReviews} />)
                                 }
-
                             </>
                     }
-
                 </Row>
 
             </Container>
@@ -136,11 +119,6 @@ const PlaceDetailsPage = () => {
                 </Modal.Body>
             </Modal>
 
-            <Collapse in={openReview}>
-                <div id="example-collapse-text">
-                    <ReviewForm closeReview={handleTransClose} />
-                </div>
-            </Collapse>
 
 
         </>

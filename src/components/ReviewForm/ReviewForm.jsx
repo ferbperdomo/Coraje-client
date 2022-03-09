@@ -3,12 +3,11 @@ import { useNavigate, useParams } from "react-router-dom"
 import reviewsService from "../../services/review.service"
 import { Form, Button } from 'react-bootstrap'
 
-const ReviewForm = ({ closeReview }) => {
+const ReviewForm = ({ closeReview, loadReviews }) => {
 
     const [reviewInfo, setReviewInfo] = useState({
         text: "",
-        rating: 0,
-        date: ""
+        rating: 0
     })
 
     const { text, rating } = reviewInfo
@@ -32,6 +31,7 @@ const ReviewForm = ({ closeReview }) => {
         reviewsService
             .createReview(id, { text, rating })
             .then(() => {
+                loadReviews()
                 navigate(`/detalles/${id}`)
                 closeReview()
             })

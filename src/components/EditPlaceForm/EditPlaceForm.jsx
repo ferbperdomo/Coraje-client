@@ -44,9 +44,7 @@ const EditPlaceForm = ({ closeModal }) => {
     const loadPlaces = () => {
         placesService
             .getOnePlace(id)
-            .then(({ data }) => {
-                setPlaceInfo(data)
-            })
+            .then(({ data }) => setPlaceInfo(data))
             .catch(err => console.log(err))
     }
 

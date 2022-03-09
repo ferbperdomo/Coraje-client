@@ -69,6 +69,8 @@ function CreatePlaceForm() {
         )
     }
 
+
+
     function handleSubmit(e) {
 
         e.preventDefault()
@@ -106,6 +108,20 @@ function CreatePlaceForm() {
                     <Form.Group className="mb-3">
                         <Form.Label>Añade la ubicación</Form.Label>
                         <Form.Control type="text" name="locationText" value={locationText} onChange={handleInputChange} />
+                        {/* <GooglePlacesAutocomplete
+                            placeholder="Search"
+                            query={{
+                                key: process.env.REACT_APP_MAPS_API_KEY,
+                                language: 'es'
+                            }}
+                            onPress={(data, details = null) => console.log(data)}
+                            onFail={(error) => console.error(error)}
+                            requestUrl={{
+                                url:
+                                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
+                                useOnPlatform: 'web',
+                            }} // this in only required for use on the web. See https://git.io/JflFv more for details.
+                        /> */}
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Sube una imagen del local</Form.Label>

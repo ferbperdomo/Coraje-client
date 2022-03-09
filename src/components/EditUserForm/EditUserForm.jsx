@@ -14,7 +14,6 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
     }, [])
 
     const loadUser = () => {
-        console.log('Entrando')
         usersService
             .getOneUser(id)
             .then(({ data }) => {
@@ -63,9 +62,8 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
 
         usersService
             .updateOneUser(id, { username, email, profileImg, description })
-            .then(({ data }) => {
+            .then(() => {
                 loadUserInfo()
-                console.log(data)
                 closeModal()
             })
             .catch(err => console.log(err))
