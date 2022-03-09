@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadService from "../../services/upload.service"
 import placesService from "../../services/places.service"
 import { useNavigate } from 'react-router-dom'
 import Geocode from "react-geocode"
+import { MessageContext } from './../../context/userMessage.context'
 Geocode.setApiKey(`${process.env.REACT_APP_MAPS_API_KEY}`)
 Geocode.setLanguage("es")
 Geocode.setRegion("es")
@@ -19,6 +20,7 @@ function CreatePlaceForm() {
         description: "",
         locationText: ""
     })
+    const { setShowMessage, setMessageInfo } = useContext(MessageContext)
 
     const [placeGeolocation, setPlaceGeolocation] = useState({ lat: "", lng: "" })
 
@@ -77,7 +79,11 @@ function CreatePlaceForm() {
 
         placesService
             .createOnePlace({ name, type, url, description, lat, lng, image })
-            .then(() => navigate('/'))
+            .then(() => {
+                setShowMessage(true)
+                setMessageInfo({ title: 'Éxito', body: 'Se ha creado el lugar exitosamente' })
+                navigate('/')
+            })
             .catch(err => console.log(err))
     }
 
@@ -108,20 +114,6 @@ function CreatePlaceForm() {
                     <Form.Group className="mb-3">
                         <Form.Label>Añade la ubicación</Form.Label>
                         <Form.Control type="text" name="locationText" value={locationText} onChange={handleInputChange} />
-                        {/* <GooglePlacesAutocomplete
-                            placeholder="Search"
-                            query={{
-                                key: process.env.REACT_APP_MAPS_API_KEY,
-                                language: 'es'
-                            }}
-                            onPress={(data, details = null) => console.log(data)}
-                            onFail={(error) => console.error(error)}
-                            requestUrl={{
-                                url:
-                                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
-                                useOnPlatform: 'web',
-                            }} // this in only required for use on the web. See https://git.io/JflFv more for details.
-                        /> */}
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Sube una imagen del local</Form.Label>
