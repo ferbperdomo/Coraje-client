@@ -1,10 +1,9 @@
-import { Navbar, Container, Nav, Modal, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import LoginForm from '../LoginForm/LoginForm'
 import SignUpForm from '../SignUpForm/SignUpForm'
-import CreatePlaceForm from '../PlaceForm/PlaceForm'
 
 const Navigation = () => {
 
@@ -14,14 +13,9 @@ const Navigation = () => {
     const handleLoginModalClose = () => setShowLoginModal(false)
     const handleLoginModalOpen = () => setShowLoginModal(true)
 
-    const [showSignupModal, setShowSignupModal] = useState(false)                 // esto se tiene que poder refactorizar
-    const handleSignupModalClose = () => setShowSignupModal(false)                // el problema es qué poner en el Modal.Body
+    const [showSignupModal, setShowSignupModal] = useState(false)
+    const handleSignupModalClose = () => setShowSignupModal(false)
     const handleSignupModalOpen = () => setShowSignupModal(true)
-
-    const [showRegisterModal, setShowRegisterModal] = useState(false)                 // esto se tiene que poder refactorizar
-    const handleRegisterModalClose = () => setShowRegisterModal(false)                // el problema es qué poner en el Modal.Body
-    const handleRegisterModalOpen = () => setShowRegisterModal(true)
-
 
     return (
         <>
@@ -46,22 +40,11 @@ const Navigation = () => {
                                     :
                                     <>
                                         <NavLink to={`/perfil/${user?._id}`}>
-                                            {/* <Nav.Link as="span">Perfil de {user?.username}</Nav.Link> */}
                                             <Nav.Link as="span">Mi perfil</Nav.Link>
-                                        </NavLink>
-                                        {/* <NavLink to='/crear-local'>
-                                            <Nav.Link as="span">Registrar local</Nav.Link>
-                                        </NavLink> */}
-                                        <NavLink to='#'>
-                                            <Nav.Link as="span" onClick={handleRegisterModalOpen}>Registrar local</Nav.Link>
                                         </NavLink>
                                         <NavLink to='/resultados-busqueda-usuarixs'>
                                             <Nav.Link as="span">Buscar amigxs</Nav.Link>
                                         </NavLink>
-                                        {/* <NavLink to='/resultados-busqueda-usuarixs'>
-                                            <Nav.Link as="span">Cambiar contraseña</Nav.Link>
-                                        </NavLink> */}
-
                                         <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
                                     </>
                             }
@@ -88,14 +71,6 @@ const Navigation = () => {
                 </Modal.Body>
             </Modal>
 
-            <Modal show={showRegisterModal} onHide={handleRegisterModalClose} size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title>Registrar local</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <CreatePlaceForm closeModal={handleRegisterModalClose} />
-                </Modal.Body>
-            </Modal>
         </>
 
     )

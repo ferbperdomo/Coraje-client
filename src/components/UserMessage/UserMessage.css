@@ -1,0 +1,5 @@
+#toasty .toast {
+    position: 'fixed'!important; 
+    left: 10 !important;
+    bottom: 10 !important;
+}

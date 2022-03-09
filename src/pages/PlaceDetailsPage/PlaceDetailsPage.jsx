@@ -1,15 +1,19 @@
-import { useParams } from "react-router-dom"
-import placesService from "../../services/places.service"
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
+<<<<<<< HEAD
 import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
 import { Button, Modal, Collapse, Container, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
+=======
+import { Button, Modal, Collapse, Row, Container } from 'react-bootstrap'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+>>>>>>> f57205faf5e0941849bd1e9ec129f12bd71abb73
 import usersService from "../../services/users.service"
-import ReviewForm from "../../components/ReviewForm/ReviewForm"
+import placesService from "../../services/places.service"
 import reviewsService from "../../services/review.service"
+import ReviewForm from "../../components/ReviewForm/ReviewForm"
 import ReviewCard from '../../components/ReviewCard/ReviewCard'
-
+import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
 
 const PlaceDetailsPage = () => {
 
@@ -26,18 +30,34 @@ const PlaceDetailsPage = () => {
     const { id } = useParams()
 
     const [placeDetails, setPlaceDetails] = useState({})
+    const [favorites, setFavorites] = useState([])
+    const [isFavorite, setIsFavorite] = useState(false)
     const [reviews, setReviews] = useState([])
 
     const { name, type, description, image, location, url, owner } = placeDetails
+
     useEffect(() => {
         loadPlace()
         loadReviews()
     }, [])
 
+    useEffect(() => {
+        user && loadUser()
+    }, [user])
+
     const loadPlace = () => {
         placesService
             .getOnePlace(id)
             .then(({ data }) => setPlaceDetails(data))
+            .catch(err => console.log(err))
+    }
+
+    const loadUser = () => {
+        usersService
+            .getOneUser(user._id)
+            .then(({ data }) => {
+                setFavorites(data.favPlaces.map(elm => elm._id))
+            })
             .catch(err => console.log(err))
     }
 
@@ -62,9 +82,15 @@ const PlaceDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+    const handleRemoveFavPlace = () => {
+        usersService
+            .removeOnePlace(id)
+            .then(() => navigate(`/perfil/${user._id}`))
+            .catch(err => console.log(err))
+    }
+
     return (
         <>
-
             <Container>
                 <Row>
 
@@ -86,14 +112,12 @@ const PlaceDetailsPage = () => {
                                     <Button>Editar información</Button>
                                 </Link>
                                 <Button variant="danger" type="submit" value="Submit" onClick={handleDeleteFavPlace}>Eliminar lugar</Button>
-
                             </>
                             :
                             <>
-
-                                <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Agregar lugar a favoritos</Button>
-
-
+                                {!favorites.includes(id)
+                                    ? <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Añadir a favoritos</Button>
+                                    : <Button variant="danger" type="submit" value="Submit" onClick={handleRemoveFavPlace}>Eliminar de favoritos</Button>}
                                 <Button onClick={handleTransOpen} > Añadir opinión </Button>
 
                                 <Collapse in={openReview}>
@@ -118,11 +142,7 @@ const PlaceDetailsPage = () => {
                     <EditPlaceForm closeModal={handleModalClose} />
                 </Modal.Body>
             </Modal>
-
-
-
         </>
-
     )
 }
 
