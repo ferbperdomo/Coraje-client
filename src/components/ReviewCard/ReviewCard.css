@@ -1,0 +1,32 @@
+.review {
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(243, 176, 243, 0.727);
+}
+
+.review .card-header {
+    background-color: rgba(243, 176, 243, 0.727)
+}
+
+.review img {
+    width: 35%;
+    height: 100px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.review button {
+    text-align: center;
+    color: #d36dfc;
+    background-color: white;
+    border: none;
+    width: 100px;
+}
+
+.review button:hover {
+    color:#ffecfc;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease;
+    border: none;
+}

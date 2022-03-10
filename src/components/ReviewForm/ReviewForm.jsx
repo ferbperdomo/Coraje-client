@@ -42,11 +42,11 @@ const ReviewForm = ({ closeReview, loadReviews }) => {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>¿Qué te gustaría decir sobre este establecimiento?</Form.Label>
-                    <Form.Control as="textarea" name="text" value={text} onChange={handleInputChange} />
+                    <Form.Control as="textarea" name="text" className="form-input" value={text} onChange={handleInputChange} />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Añade una puntuación</Form.Label>
-                    <Form.Select name="rating" value={rating} onChange={handleInputChange}>
+                    <Form.Select name="rating" value={rating} onChange={handleInputChange} className="form-input">
                         <option>0</option>
                         <option>1</option>
                         <option>2</option>
@@ -55,7 +55,7 @@ const ReviewForm = ({ closeReview, loadReviews }) => {
                         <option>5</option>
                     </Form.Select>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className="form-button" type="submit">
                     Añadir valoración
                 </Button>
             </Form>

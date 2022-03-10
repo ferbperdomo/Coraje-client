@@ -26,16 +26,16 @@ const ReviewCard = ({ review, loadReviews, placeId }) => {
                     <blockquote className="review-text">
                         <p>
                             {' '}{review.text}{' '}
+                            <br />
+                            <br />
                             {review.rating}
-                        </p>
-                        <footer className="review-date">
+                            <br />
+                            <br />
                             {review.date}
-                        </footer>
+                        </p>
                     </blockquote>
                 </Card.Body>
-                <Link to='#' onClick={deleteReview}>
-                    <Button>Eliminar comentario</Button>
-                </Link>
+                <Button onClick={deleteReview} className="form-button">Eliminar comentario</Button>
             </Card>
         </article>
     )

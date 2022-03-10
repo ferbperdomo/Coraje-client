@@ -1,3 +1,4 @@
+import '../PlaceDetailsPage/placeDetailsPage.css'
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
 import EditPlaceForm from "../../components/EditPlaceForm/EditPlaceForm"
@@ -93,7 +94,6 @@ const PlaceDetailsPage = () => {
 
                         <img className="placeimg" src={image} />
                         <hr />
-                        <Link to={`/perfil/${user?._id}`}>Volver</Link>
                         <h1>{name}</h1>
                         <p>{type}</p>
                         <p>{description}</p>
@@ -104,18 +104,18 @@ const PlaceDetailsPage = () => {
                         user?._id === owner || user?.role === "ADMIN" ?
                             <>
                                 <Link to='#' onClick={handleModalOpen}>
-                                    <Button>Editar información</Button>
+                                    <Button className='place-button'>Editar información</Button>
                                 </Link>
-                                <Button variant="danger" type="submit" value="Submit" onClick={handleDeleteFavPlace}>Eliminar lugar</Button>
+                                <Button className='place-button' type="submit" value="Submit" onClick={handleDeleteFavPlace}>Eliminar lugar</Button>
                             </>
                             :
                             <>
                                 {!favorites.includes(id)
-                                    ? <Button variant="primary" type="submit" value="Submit" onClick={handleAddFavPlace}>Añadir a favoritos</Button>
-                                    : <Button variant="danger" type="submit" value="Submit" onClick={handleRemoveFavPlace}>Eliminar de favoritos</Button>}
-                                <Button onClick={handleTransOpen} > Añadir opinión </Button>
+                                    ? <Button className='place-button' type="submit" value="Submit" onClick={handleAddFavPlace}>Añadir a favoritos</Button>
+                                    : <Button className='place-button' type="submit" value="Submit" onClick={handleRemoveFavPlace}>Eliminar de favoritos</Button>}
+                                <Button className='place-button' onClick={handleTransOpen} > Añadir opinión </Button>
 
-                                <Collapse in={openReview}>
+                                <Collapse in={openReview} className="collapse">
                                     <div id="example-collapse-text">
                                         <ReviewForm closeReview={handleTransClose} loadReviews={loadReviews} />
                                     </div>
@@ -126,7 +126,8 @@ const PlaceDetailsPage = () => {
                             </>
                     }
                 </Row>
-
+                <hr />
+                <Link to={`/perfil/${user?._id}`}>Volver</Link>
             </Container>
 
             <Modal show={showModal} onHide={handleModalClose} size="lg">

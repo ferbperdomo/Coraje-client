@@ -1,3 +1,58 @@
 .placeDetails .placeimg{
     width: 10%;
 }
+
+.place-button {
+    text-align: center;
+    color: #d36dfc;
+    background-color: white;
+    border: none;
+    margin: 20px;
+    width: 400px;
+}
+
+.place-button:hover {
+    color:#ffecfc;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease;
+    border: none;
+}
+
+.placeDetails a {
+    text-decoration: none;
+    color: rgb(248, 156, 248)
+}
+
+.placeDetails a:hover {
+    color:rgb(179, 78, 179)
+}
+
+.collapse .form-input {
+    box-shadow: none !important;
+    background-color: #ffecfc;
+    border: none;
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.398)
+    
+}
+
+.form-input:focus {
+    border-radius: 0 !important;
+}
+
+.form-button {
+    text-align: center;
+    color: #d36dfc;
+    background-color: white;
+    border: none;
+}
+
+.form-button:hover {
+    color:#ffecfc;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease;
+    border: none;
+}
+
