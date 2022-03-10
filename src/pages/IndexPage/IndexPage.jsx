@@ -52,9 +52,14 @@ const IndexPage = () => {
                                     onChange={handleInput}
                                 />
                             </Form>
-
-                            <hr />
-                            <LoadMap places={places} placeSearched={placesSearch} />
+                            {
+                                placesSearch
+                                    ?
+                                    <LoadMap places={places} placeSearched={placesSearch} />
+                                    : <>
+                                        <h1>Bienvenidx!</h1>
+                                    </>
+                            }
                         </>
                 }
             </>
