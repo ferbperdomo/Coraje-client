@@ -14,7 +14,7 @@ const PlacesCard = ({ favPlace }) => {
                     <Card.Title> {name}</Card.Title>
                     <Card.Text>{type}</Card.Text>
                     <Link to={`/detalles/${favPlace?._id}`}>
-                        <Button variant="primary">Detalles</Button>
+                        <Button>Detalles</Button>
                     </Link>
                 </Card.Body>
             </Card>

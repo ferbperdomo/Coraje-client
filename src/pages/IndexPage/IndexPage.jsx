@@ -55,7 +55,6 @@ const IndexPage = () => {
                         {placesSearch && <LoadMap places={places} placeSearched={placesSearch} />}
                     </>
             }
-            <Spinner />
         </Container>
     )
 }

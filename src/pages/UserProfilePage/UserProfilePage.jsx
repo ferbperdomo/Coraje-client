@@ -83,30 +83,30 @@ const UserProfilePage = () => {
                             <>
                                 <UserCard userInfo={userDetails} />
 
-                                <Button className="profile-page-button" onClick={handleModalOpen}>Editar información de perfil</Button>
+                                <Button className="profile-page-button mt-3 mb-5" onClick={handleModalOpen}>Editar información de perfil</Button>
 
-                                {user?.role === "ADMIN" && <Button className="profile-page-button" type="submit" value="Submit" onClick={handleDeleteUser}>Eliminar usuarix</Button>}
-                                {user?.role === "OWNER" && <Button className="profile-page-button" type="submit" value="Submit" onClick={handleRegisterModalOpen}>Añadir local</Button>}
+                                {user?.role === "ADMIN" && <Button className="profile-page-button mt-3 mb-5" type="submit" value="Submit" onClick={handleDeleteUser}>Eliminar usuarix</Button>}
+                                {user?.role === "OWNER" && <Button className="profile-page-button mt-3 mb-5" type="submit" value="Submit" onClick={handleRegisterModalOpen}>Añadir local</Button>}
 
                             </>
                             :
                             <>
                                 <UserCard userInfo={userDetails} />
-                                {isMyFriend || <Button className="profile-page-button" type="submit" value="Submit" onClick={handleAddFriend}>Agregar amigx</Button>}
-                                {isMyFriend && <Button className="profile-page-button" type="submit" value="Submit" onClick={handleRemoveFriend}>Eliminar amigx</Button>}
+                                {isMyFriend || <Button className="profile-page-button mt-3 mb-5" type="submit" value="Submit" onClick={handleAddFriend}>Agregar amigx</Button>}
+                                {isMyFriend && <Button className="profile-page-button mt-3 mb-5" type="submit" value="Submit" onClick={handleRemoveFriend}>Eliminar amigx</Button>}
                             </>
                     }
                 </Row>
 
-                <Row>
+                <Row className='cards'>
                     <h1>Sitios favoritos</h1>
                     {favPlaces?.map(place => {
-                        return <Col md={6} key={place._id}> <PlacesCard favPlace={place} /> </Col>
+                        return <Col md={6} className="me-auto" key={place._id}> <PlacesCard favPlace={place} /> </Col>
                     })
                     }
                 </Row>
 
-                <Row>
+                <Row className='cards'>
                     <h1>Amigxs</h1>
                     {friends?.map(friend => {
                         return <Col md={6} key={friend._id}> <FriendsCard friend={friend} /> </Col>

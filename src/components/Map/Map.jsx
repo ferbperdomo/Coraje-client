@@ -13,32 +13,37 @@ function Map({ places, geoLocation }) {
     }
 
     return (
+        <div className="markerMap">
 
-        <GoogleMap
-            zoom={14}
-            center={geoLocation}
-            options={{ styles: mapStyles.purpleRain }}
-            onClick={() => setActiveMarker(null)}
-            mapContainerStyle={{ width: '70%', height: "50vh", marginLeft: "15%" }}>
-            {places.map(({ _id, name, location, type }) => (
-                <Marker
-                    key={_id}
-                    position={
-                        {
-                            lat: parseFloat(location.coordinates[0]),
-                            lng: parseFloat(location.coordinates[1])
+            <GoogleMap
+                zoom={14}
+                center={geoLocation}
+                options={{ styles: mapStyles.purpleRain }}
+                onClick={() => setActiveMarker(null)}
+                mapContainerStyle={{ width: '70%', height: "50vh", marginLeft: "15%" }}>
+                {places.map(({ _id, name, location, type }) => (
+                    <Marker
+                        key={_id}
+                        position={
+                            {
+                                lat: parseFloat(location.coordinates[0]),
+                                lng: parseFloat(location.coordinates[1])
+                            }
                         }
-                    }
+                        
+                        // icon= 'https://res.cloudinary.com/ferbperdomo/image/upload/v1646942473/Coraje/marker_havxsk.png'
 
-                    onClick={() => handleActiveMarker(_id)}>
-                    {activeMarker === _id ? (
-                        <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                            <div className="placeLink"><Link to={`/detalles/${_id}`}>{name}</Link><br />{type}</div>
-                        </InfoWindow>
-                    ) : null}
-                </Marker>
-            ))}
-        </GoogleMap>
+                        onClick={() => handleActiveMarker(_id)}>
+                        {activeMarker === _id ? (
+                            <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                                <div className="placeLink"><Link to={`/detalles/${_id}`}>{name}</Link><br />{type}</div>
+                            </InfoWindow>
+                        ) : null}
+                    </Marker>
+                ))}
+            </GoogleMap>
+        </div>
+
     )
 }
 

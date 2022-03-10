@@ -1,4 +1,6 @@
 .favplace-card .card{
+    margin: 10px;
+    height: 250px;
     padding: 10px;
     box-shadow: 0px 0px 5px rgba(243, 176, 243, 0.727);
 }
@@ -12,7 +14,6 @@
 }
 
 .favplace-card button {
-    text-align: center;
     color: #d36dfc;
     background-color: white;
     border: none;
@@ -25,4 +26,17 @@
     border-radius: 2px;   
     transition: .6s ease;
     border: none;
+}
+
+@media (min-width: 576px){
+    .favplace-card .card{
+    height: 250px;
+    }
+  
+}
+@media (min-width: 992px){
+  .favplace-card .card{
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(243, 176, 243, 0.727);
+    }
 }

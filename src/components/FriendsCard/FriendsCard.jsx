@@ -10,7 +10,6 @@ const FriendsCard = ({ friend }) => {
                 <Card.Img variant="top" src={profileImg} />
                 <Card.Body>
                     <Card.Title>{username}</Card.Title>
-
                     <Link to={`/perfil/${_id}`}>
                         <Button variant="primary">Detalles</Button>
                     </Link>
