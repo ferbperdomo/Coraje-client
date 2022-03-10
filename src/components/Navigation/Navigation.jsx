@@ -37,10 +37,10 @@ const Navigation = () => {
                                 !isLoggedIn ?
                                     <>
                                         <NavLink to='#'>
-                                            <Nav.Link as="span" onClick={handleSignupModalOpen}>Registrarme</Nav.Link>
+                                            <Nav.Link className='elm' as="span" onClick={handleSignupModalOpen}>Registrarme</Nav.Link>
                                         </NavLink>
                                         <NavLink to='#'>
-                                            <Nav.Link as="span" onClick={handleLoginModalOpen}>Iniciar sesión</Nav.Link>
+                                            <Nav.Link className='elm' as="span" onClick={handleLoginModalOpen}>Iniciar sesión</Nav.Link>
                                         </NavLink>
                                     </>
                                     :

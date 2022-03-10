@@ -3,6 +3,8 @@ import { LoadMap } from '../../components/Map/LoadMap'
 import placesService from '../../services/places.service'
 import { useEffect, useState } from "react"
 import Spinner from '../../components/Spinner/Spinner'
+import BouncingArrow from "../../components/BouncingArrow/BoucingArrow"
+import './IndexPage.css'
 
 const IndexPage = () => {
     const [places, setPlaces] = useState([])
@@ -35,12 +37,13 @@ const IndexPage = () => {
     return (
         <Container>
             <>
+                <p className="visit">Visita nuestra colección de lugares en los que te sentirás segurx.</p>
+                {!placesSearch && <img src="https://res.cloudinary.com/ferbperdomo/image/upload/v1646904504/Coraje/coraje_trans_ubqje8.png" alt="coraje el perro cobarde" />, <BouncingArrow />}
                 {
                     loading
                         ? <Spinner />
-
                         : <>
-                            <Form className="d-flex mb-3 mt-5" onSubmit={handleSubmit}>
+                            <Form className="searchBar d-flex mb-3 mt-5" onSubmit={handleSubmit}>
                                 <FormControl
                                     type="search"
                                     placeholder="¿A qué lugar te gustaría ir?"
@@ -49,14 +52,8 @@ const IndexPage = () => {
                                     onChange={handleInput}
                                 />
                             </Form>
-                            {
-                                placesSearch
-                                    ?
-                                    <LoadMap places={places} placeSearched={placesSearch} />
-                                    :
-                                    <>
-                                        <h1>hola</h1>
-                                    </>
+                            {placesSearch &&
+                                <LoadMap places={places} placeSearched={placesSearch} />
                             }
                         </>
                 }

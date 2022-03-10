@@ -19,7 +19,7 @@ function Map({ places, geoLocation }) {
             center={geoLocation}
             options={{ styles: mapStyles.purpleRain }}
             onClick={() => setActiveMarker(null)}
-            mapContainerStyle={{ width: "85vw", height: "50vh" }}>
+            mapContainerStyle={{ width: '70%', height: "50vh", marginLeft: "15%" }}>
             {places.map(({ _id, name, location, type }) => (
                 <Marker
                     key={_id}

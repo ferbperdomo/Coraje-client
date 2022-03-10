@@ -6,11 +6,12 @@
 .navbar-brand{
     font-weight: 300;
     font-size: 1.5em;
-    
+    align-items: center;
 }
 .nav-link{
-font-size: 1.3em;
+font-size: .8em;
 }
+
 .navbar-light .navbar-brand {
     color: rgba(0,0,0,.55);
 }
@@ -23,10 +24,16 @@ background: linear-gradient(#edc3e82a, #f2cde791);
     text-decoration: none;
 }
 
+.navbar-nav a {
+  width: 100px;
+}
+
 @media (min-width: 576px){
    .logo {
     width: 18%;
-}
+  }
+  
+
 }
 @media (min-width: 768px){
   .logo {
@@ -35,6 +42,7 @@ background: linear-gradient(#edc3e82a, #f2cde791);
   .navbar-brand{
     font-size: 1.8em;
   }
+  
 }
 @media (min-width: 992px){
   .logo {
@@ -42,6 +50,11 @@ background: linear-gradient(#edc3e82a, #f2cde791);
   }
   .navbar-brand{
     font-size: 1.9em;
+  }
+
+  .nav-link{
+  font-size: .9em;
+  padding: 0;
   }
 }
 

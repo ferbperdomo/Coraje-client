@@ -4,6 +4,9 @@ body {
 img {
   width: 100%;
 }
+main {
+  min-height: 85vh;
+}
 
 .navbar-nav {
     display: flex;
@@ -45,7 +48,13 @@ img {
 .slogan {
   font-size: 1.4em;
   color: rgba(0,0,0,.55);
-  margin-bottom: 15%;
+  margin-bottom: 10%;
+}
+.visit {
+  font-size: 1.4em;
+  color: rgba(0,0,0,.55);
+  margin-bottom: 8%;
+  text-align: center;
 }
 .logoContainer{
   margin-bottom: 3%;
@@ -67,17 +76,16 @@ img {
 }
 
 .placesButton{
-  background-color: #f2cde791;
+  background: linear-gradient(#edc3e82a, #f2cde791);
   border: none;
   font-size: 1.4em;
   color: rgba(0,0,0,.55);
+  margin-bottom: 10%;
 }
 
 .placesButton:hover {
-    text-decoration: none;
     color:#fdfdfd;
-    background-color: #dba1f2; 
-    border-radius: 2px;   
+    background-color: #903b8e; 
     transition: .6s ease
 }
 
@@ -85,10 +93,19 @@ img {
    .slogan {
   font-size: 1.2em;
   }
+  .visit {
+  font-size: 1.6em;
+  }
 }
 @media (min-width: 768px){
   .slogan {
   font-size: 1.4em;
+  }
+  .visit {
+  font-size: 1.8em;
+  }
+  .footer {
+    font-size: 2em;
   }
 }
 @media (min-width: 992px){
@@ -98,6 +115,9 @@ img {
 @media (min-width: 1200px) { 
   .homeLogo{
   width: 18%;
+  }
+  .visit {
+  font-size: 2em;
   }
 }
  

@@ -22,6 +22,9 @@ const HomePage = () => {
 
                 </article>
             </section>
+            <Link to='/buscador'>
+                <Button className="placesButton">Ver los sitios</Button>
+            </Link>
 
             <section id="justification">
                 <article>
@@ -29,10 +32,6 @@ const HomePage = () => {
                     <img className="coraje" src="https://res.cloudinary.com/ferbperdomo/image/upload/v1646904504/Coraje/coraje_trans_l_e2yfae.png" alt="coraje el perro cobarde" />
                 </article>
             </section>
-
-            <Link to='/buscador'>
-                <Button className="placesButton mb-5">Ver los sitios</Button>
-            </Link>
 
         </Container>
     )

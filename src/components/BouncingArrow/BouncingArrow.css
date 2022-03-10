@@ -1,0 +1,18 @@
+div.arrow {
+    margin: auto;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    line-height: 40px;
+    animation: bounce 2s infinite ease-in-out;
+    color: #903b8e;
+}
+@keyframes bounce {
+	0%, 20%, 60%, 100%  { -webkit-transform: translateY(0); }
+    40%  { -webkit-transform: translateY(-20px); }
+	80% { -webkit-transform: translateY(-10px); }
+}
+
+
