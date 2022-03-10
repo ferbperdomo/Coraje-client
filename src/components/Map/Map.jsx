@@ -1,6 +1,7 @@
 import { React, useState } from "react"
 import { GoogleMap, InfoWindow, Marker } from "@react-google-maps/api"
 import { Link } from "react-router-dom"
+import mapStyles from './mapStyles'
 
 function Map({ places, geoLocation }) {
 
@@ -16,6 +17,7 @@ function Map({ places, geoLocation }) {
         <GoogleMap
             zoom={16}
             center={geoLocation}
+            options={{ styles: mapStyles.purpleRain }}
             onClick={() => setActiveMarker(null)}
 
             mapContainerStyle={{ width: "85vw", height: "50vh" }}>
