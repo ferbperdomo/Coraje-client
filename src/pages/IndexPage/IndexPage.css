@@ -5,11 +5,8 @@
 }
 
 #map-search {
-    width: 98%;
-    margin: 0 auto;
     box-shadow: none !important;
     border: none;
-    margin: 20px;
     border-radius: 0 !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.398);
 }

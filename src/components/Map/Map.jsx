@@ -33,7 +33,7 @@ function Map({ places, geoLocation }) {
                     onClick={() => handleActiveMarker(_id)}>
                     {activeMarker === _id ? (
                         <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                            <div><Link to={`/detalles/${_id}`}>{name}</Link><br />{type}</div>
+                            <div className="placeLink"><Link to={`/detalles/${_id}`}>{name}</Link><br />{type}</div>
                         </InfoWindow>
                     ) : null}
                 </Marker>

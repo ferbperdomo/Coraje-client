@@ -7,6 +7,11 @@ img {
 main {
   min-height: 85vh;
 }
+a {
+  text-decoration: none;
+  color: #a538d0;
+
+}
 
 .navbar-nav {
     display: flex;
@@ -26,7 +31,7 @@ main {
 }
 .homeContainer{
   text-align: center;
-  padding: 10%;
+  padding: 6%;
 }
 .homeLogo{
   width: 20%;

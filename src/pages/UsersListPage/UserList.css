@@ -1,6 +1,6 @@
 .container-card img {
-    width: 200px;
-    height: 200px;
+    width: 90%;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
     border: 1px solid rgb(245, 182, 193);
@@ -9,7 +9,7 @@
 .container-card {
     background: linear-gradient(#edc3e82a, #f2cde791);
     border-bottom: 1px solid #f2d5ff;
-    padding: 20px;
+    padding: 10px;
     margin: 9px;
     display: flex;
     align-items: center;
@@ -17,11 +17,8 @@
 }
 
 .container-card a {
-    text-decoration: none;
     text-align: center;
-    color: #a538d0;
-    width: 90px;
-    padding: 10px;
+    width: 50%;
 }
 
 .container-card a:hover {
@@ -55,11 +52,29 @@
 @media (min-width: 576px){
 
 }
+@media (min-width: 768px){
+  .container-card img {
+    height: 200px;
+    }
+    .container-card {
+    font-size: 1.2em;
+    }
+}
 
 @media (min-width: 992px){
- 
+ .container-card img {
+    height: 250px;
+    }
 }
 
 @media (min-width: 1200px) { 
-  
+  .container-card img {
+    height: 350px;
+    }
+    .container-card {
+    font-size: 1.4em;
+    }
+    .container-card a {
+        font-size: 1.3em;
+    }
 }
