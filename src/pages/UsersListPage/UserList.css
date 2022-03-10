@@ -1,38 +1,69 @@
-img {
+.container-card img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
+    border: 1px solid rgb(245, 182, 193);
 }
 
 .container-card {
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid #f2d5ff;
+    background: linear-gradient(#edc3e82a, #f2cde791);
+    border-bottom: 1px solid #f2d5ff;
     padding: 20px;
-    margin: 10px;
+    margin: 9px;
     display: flex;
     align-items: center;
+    box-shadow: 0px 0px 5px rgba(243, 176, 243, 0.727);
 }
 
 a {
     text-decoration: none;
-    color: #9952b5
+    text-align: center;
+    color: #a538d0;
+    width: 80px;
 }
 
-.userListPage {
-    width: 1200px;
+a:hover {
+    text-decoration: none;
+    color:#fdfdfd;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease
 }
 
 #user-search {
+    width: 98%;
+    margin: 0 auto;
+    box-shadow: none !important;
     border: none;
-    width: 500px;
-    display: flex;
-    justify-content: center;
+    margin: 20px;
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.398);
+}
+
+#user-search:focus {
+    border-radius: 0 !important;
 }
 
 .card-text {
     display: flex;
     flex-direction: column;
     justify-content: start;
+}
+
+.form-control {
+    border-bottom: 1px solid rgb(157, 155, 155);
+}
+
+
+@media (min-width: 576px){
+
+}
+
+@media (min-width: 992px){
+ 
+}
+
+@media (min-width: 1200px) { 
+  
 }

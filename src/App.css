@@ -14,10 +14,6 @@ body {
     text-decoration: none;
 }
 
-.pac-container {
-  z-index: 10000 !important;
-}
-
 @media (min-width: 576px){
    
 }

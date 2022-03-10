@@ -43,11 +43,11 @@ const UserListPage = () => {
     return (
         <>
             <Container className="userListPage">
-                <Form className="d-flex mb-3 mt-5" id="user-search" onSubmit={handleSubmit}>
+                <Form className="d-flex mb-3 mt-5" onSubmit={handleSubmit}>
                     <FormControl
+                        id="user-search"
                         type="search"
                         placeholder="Buscar amigxs"
-                        className="me-2"
                         aria-label="Search"
                         onChange={handleInput}
                     />
@@ -55,10 +55,10 @@ const UserListPage = () => {
 
                 {users.map(user => {
                     return <Row className="container-card" id="user-card">
-                        <Col xs={4} md={3}>
+                        <Col xs={4} >
                             <img src={user.profileImg} alt="Foto de perfil" />
                         </Col>
-                        <Col xs={8} md={9} className="card-text">
+                        <Col xs={8} className="card-text">
                             <h3>{user.username}</h3>
                             <p>{user.description}</p>
                             <Link to={`/perfil/${user._id}`}>Ir al perfil</Link>
