@@ -96,7 +96,7 @@ const EditUserForm = ({ closeModal, loadUserInfo }) => {
                         </Form.Text>
                     </Form.Group>
                     <div className="d-grid gap-2">
-                        <Button variant="dark" type="submit">Completar edición</Button>
+                        <Button className="form-button" type="submit">Completar edición</Button>
                     </div>
                 </Form>
             </Col>

@@ -1,3 +1,4 @@
+import '../IndexPage/IndexPage.css'
 import { Container, Form, FormControl } from "react-bootstrap"
 import { LoadMap } from '../../components/Map/LoadMap'
 import placesService from '../../services/places.service'
@@ -45,6 +46,7 @@ const IndexPage = () => {
                         : <>
                             <Form className="searchBar d-flex mb-3 mt-5" onSubmit={handleSubmit}>
                                 <FormControl
+                                    id="map-search"
                                     type="search"
                                     placeholder="¿A qué lugar te gustaría ir?"
                                     className="me-2"

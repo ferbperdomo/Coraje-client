@@ -1,3 +1,4 @@
+import '../SignUpForm/SignUpForm.css'
 import { useNavigate } from "react-router-dom"
 import { useState, useContext } from "react"
 import { Form, Button, Row, Col, } from 'react-bootstrap'
@@ -65,22 +66,22 @@ function SignUpForm({ closeModal }) {
     }
 
     return (
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-md-center modal-signup">
             <Col md="auto">
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Nombre de usuarix</Form.Label>
-                        <Form.Control type="text" name="username" value={username} onChange={handleInputChange} />
+                        <Form.Control type="text" name="username" value={username} onChange={handleInputChange} className="form-input" />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Dirección de email</Form.Label>
-                        <Form.Control type="email" name="email" value={email} onChange={handleInputChange} />
+                        <Form.Control type="email" name="email" value={email} onChange={handleInputChange} className="form-input" />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" value={password} onChange={handleInputChange} />
+                        <Form.Control type="password" name="password" value={password} onChange={handleInputChange} className="form-input" />
                         <Form.Text className="text-muted">
                             No te preocupes, nunca guardamos tu contraseña en nuestra base de datos :)
                         </Form.Text>
@@ -88,7 +89,7 @@ function SignUpForm({ closeModal }) {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Descripción</Form.Label>
-                        <Form.Control as="textarea" name="description" value={description} onChange={handleInputChange} />
+                        <Form.Control as="textarea" name="description" value={description} onChange={handleInputChange} className="form-input" />
                         <Form.Text className="text-muted">
                             Es completamente opcional, pero nos gustaría saber más de ti!
                         </Form.Text>
@@ -96,23 +97,23 @@ function SignUpForm({ closeModal }) {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Subir imagen de perfil</Form.Label>
-                        <Form.Control type="file" name="profileImg" onChange={uploadProfileImage} />
+                        <Form.Control type="file" name="profileImg" onChange={uploadProfileImage} className="form-input" />
                     </Form.Group>
 
                     <Form.Select type="text" name="role"
                         vale={role} onChange={handleInputChange}
-                        className="mb-3">
-                        <option>¿Cual es tu rol?</option>
-                        <option value="USER">Usuarix</option>
-                        <option value="OWNER">Propietarix</option>
+                        className="mb-3 form-input">
+                        <option className="form-input" >¿Eres usuarix o propietarix de establecimiento?</option>
+                        <option className="form-input" value="USER">Usuarix</option>
+                        <option className="form-input" value="OWNER">Propietarix</option>
                     </Form.Select>
 
                     <div className="d-grid gap-2">
-                        <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Espere...' : 'Completar registro'}</Button>
+                        <Button type="submit" className="form-button" disabled={loadingImage}>{loadingImage ? 'Espere...' : 'Completar registro'}</Button>
                     </div>
                 </Form>
-            </Col>
-        </Row>
+            </Col >
+        </Row >
 
     )
 }

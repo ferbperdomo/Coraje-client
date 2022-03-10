@@ -1,0 +1,16 @@
+.profile-page-button {
+    text-align: center;
+    color: #d36dfc;
+    background-color: white;
+    border: none;
+    margin: 20px;
+    width: 500px;
+}
+
+.profile-page-button:hover {
+    color:#ffecfc;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease;
+    border: none;
+}

@@ -46,15 +46,15 @@ function LoginForm({ closeModal }) {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" name="email" value={loginForm.email} onChange={handleInputChange} />
+                        <Form.Control type="email" name="email" value={loginForm.email} onChange={handleInputChange} className="form-input" />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" value={loginForm.password} onChange={handleInputChange} />
+                        <Form.Control type="password" name="password" value={loginForm.password} onChange={handleInputChange} className="form-input" />
                     </Form.Group>
                     <div className="d-grid gap-2">
-                        <Button variant="dark" type="submit">Iniciar sesión</Button>
+                        <Button variant="dark" className="form-button" type="submit">Iniciar sesión</Button>
                     </div>
                 </Form>
             </Col>
