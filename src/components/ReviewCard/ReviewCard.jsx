@@ -25,13 +25,13 @@ const ReviewCard = ({ review, loadReviews, placeId }) => {
                 <Card.Body>
                     <blockquote className="review-text">
                         <p>
-                            {' '}{review.text}{' '}
+                            {review.text}
                             <br />
                             <br />
-                            {review.rating}
+                            Puntuación: {review.rating}
                             <br />
                             <br />
-                            {review.date}
+                            Fecha :{review.date}
                         </p>
                     </blockquote>
                 </Card.Body>
