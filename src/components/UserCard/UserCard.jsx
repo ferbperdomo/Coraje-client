@@ -10,9 +10,9 @@ const UserCard = ({ userInfo }) => {
             <Card className='user-card-content'>
                 <Card.Img className='userImg' variant="top" src={profileImg} />
                 <Card.Body>
-                    <Card.Title>{username}</Card.Title>
+                    <Card.Title className='username'>{username}</Card.Title>
                     <Card.Text>{description}</Card.Text>
-                    <Card.Text>{role}</Card.Text>
+                    <Card.Text className='role'>{role}</Card.Text>
                 </Card.Body>
             </Card>
         </div>

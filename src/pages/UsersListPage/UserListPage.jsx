@@ -54,7 +54,7 @@ const UserListPage = () => {
                 </Form >
 
                 {users.map(user => {
-                    return <Row className="container-card" id="user-card">
+                    return <Row className="container-card" id="user-card" key={user._id}>
                         <Col xs={4} >
                             <img src={user.profileImg} alt="Foto de perfil" />
                         </Col>

@@ -82,7 +82,7 @@ function SignUpForm({ closeModal }) {
                     <Form.Group className="mb-3">
                         <Form.Label>Contraseña</Form.Label>
                         <Form.Control type="password" name="password" value={password} onChange={handleInputChange} className="form-input" />
-                        <Form.Text className="text-muted">
+                        <Form.Text className="text-muted">La contraseña debe tener al menos 8 caracteres.<br />
                             No te preocupes, nunca guardamos tu contraseña en nuestra base de datos :)
                         </Form.Text>
                     </Form.Group>

@@ -3,14 +3,22 @@
     color: #d36dfc;
     background-color: white;
     border: none;
-    margin: 20px;
-    width: 500px;
+    margin: 10px;
+    padding: 0;
+    width: 45%;
 }
 
 .profile-page-button:hover {
     color:#ffecfc;
+    text-align: center;
     background-color: #dba1f2; 
     border-radius: 2px;   
     transition: .6s ease;
     border: none;
+}
+
+@media (min-width: 992px){
+  .profile-page-button{
+      font-size: 1.3em;
+  }
 }

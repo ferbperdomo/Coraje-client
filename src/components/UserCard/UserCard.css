@@ -1,8 +1,8 @@
 .user-card img {
-    width: 25%;
-    height: 300px;
+    width: 30%;
+    margin-left: 5%;
+    height: 200px;
     object-fit: cover;
-    margin: 10px;
     border-radius: 10%;
 }
 
@@ -11,8 +11,32 @@
     flex-direction: row !important;
     align-items: center;
 }
-.user-card-content h1 {
-    margin: 0 auto
+.username{
+    font-size: 2em;
+}
+.role{
+    text-transform: lowercase;
 }
 
+@media (min-width: 992px){
+  .user-card img {
+    width: 30%;
+    margin-left: 0%;
+    height: 250px;
+    }
+    .user-card-content {
+        font-size: 1.3em;
+    }
 
+}
+
+@media (min-width: 1200px) { 
+  .user-card img {
+    width: 25%;
+    height: 250px;
+    }
+
+    .user-card-content {
+        font-size: 1.5em;
+    }
+}

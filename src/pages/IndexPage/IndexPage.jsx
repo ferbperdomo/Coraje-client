@@ -24,7 +24,6 @@ const IndexPage = () => {
                 setLoading(false)
             })
             .catch(err => console.log(err))
-
     }
 
     const handleInput = e => {
@@ -37,31 +36,27 @@ const IndexPage = () => {
 
     return (
         <Container>
-            <>
-                <p className="visit">Visita nuestra colección de lugares en los que te sentirás segurx.</p>
-                {!placesSearch && <img src="https://res.cloudinary.com/ferbperdomo/image/upload/v1646904504/Coraje/coraje_trans_ubqje8.png" alt="coraje el perro cobarde" />, <BouncingArrow />}
-                {
-                    loading
-                        ? <Spinner />
-                        : <>
-                            <Form className="searchBar d-flex mb-3 mt-5" onSubmit={handleSubmit}>
-                                <FormControl
-                                    id="map-search"
-                                    type="search"
-                                    placeholder="¿A qué lugar te gustaría ir?"
-                                    className="me-2"
-                                    aria-label="Search"
-                                    onChange={handleInput}
-                                />
-                            </Form>
-                            {placesSearch &&
-                                <LoadMap places={places} placeSearched={placesSearch} />
-                            }
-                        </>
-                }
-            </>
+            <p className="visit">Visita nuestra colección de lugares en los que te sentirás segurx.</p>
+            {!placesSearch && <BouncingArrow />}
+            {
+                loading
+                    ? <Spinner />
+                    : <>
+                        <Form className="searchBar d-flex mb-3 mt-5" onSubmit={handleSubmit}>
+                            <FormControl
+                                id="map-search"
+                                type="search"
+                                placeholder="¿A qué lugar te gustaría ir?"
+                                className="me-2"
+                                aria-label="Search"
+                                onChange={handleInput}
+                            />
+                        </Form>
+                        {placesSearch && <LoadMap places={places} placeSearched={placesSearch} />}
+                    </>
+            }
+            <Spinner />
         </Container>
-
     )
 }
 
