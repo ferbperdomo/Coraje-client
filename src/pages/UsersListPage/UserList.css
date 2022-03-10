@@ -1,0 +1,38 @@
+img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.container-card {
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid #f2d5ff;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #9952b5
+}
+
+.userListPage {
+    width: 1200px;
+}
+
+#user-search {
+    border: none;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}

@@ -15,7 +15,7 @@ function Map({ places, geoLocation }) {
     return (
 
         <GoogleMap
-            zoom={16}
+            zoom={14}
             center={geoLocation}
             options={{ styles: mapStyles.purpleRain }}
             onClick={() => setActiveMarker(null)}
