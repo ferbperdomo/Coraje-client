@@ -56,7 +56,22 @@ const IndexPage = () => {
                                     ?
                                     <LoadMap places={places} placeSearched={placesSearch} />
                                     : <>
-                                        <h1>Bienvenidx!</h1>
+                                        <section>
+                                            <article>
+
+                                                <p>¿Alguna vez te has sentido insegurx en un lugar por ser tal como eres?</p>
+                                                <p>Este lugar es para ti.</p>
+                                                <p>!Bienvenidx!</p>
+                                                <img src="https://res.cloudinary.com/ferbperdomo/image/upload/v1646904504/Coraje/coraje_trans_l_e2yfae.png" alt="coraje el perro cobarde" />
+
+                                            </article>
+                                        </section>
+                                        <section>
+                                            <article>
+                                                <p>Ante la violencia persistente que viven diariamente muchas personas de la  comunidad LGBTQ+, este proyecto nace ante la necesidad de brindar un espacio para buscar y/o registrar lugares seguros y amigables para nuestrxs miembrxs.</p>
+                                            </article>
+                                        </section>
+
                                     </>
                             }
                         </>

@@ -1,4 +1,5 @@
-import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
+import './Navigation.css'
+import { Navbar, Container, Nav, Modal, Col } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/auth.context'
@@ -19,12 +20,17 @@ const Navigation = () => {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" className='d-flex' >
                 <Container>
-                    <NavLink to="/">
-                        <Navbar.Brand as="span">Sekura</Navbar.Brand>
-                    </NavLink>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Col>
+                        <img className='logo' src='https://res.cloudinary.com/ferbperdomo/image/upload/v1646905964/Coraje/coraje-logo_zxskff.png' alt='logo de Coraje' />
+                        <NavLink to="/">
+                            <Navbar.Brand as="span">Coraje</Navbar.Brand>
+                        </NavLink>
+                    </Col>
+                    <Col className=' d-flex me-auto justify-content-end'>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    </Col>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav>
                             {

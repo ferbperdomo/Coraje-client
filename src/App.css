@@ -17,3 +17,17 @@ body {
 .pac-container {
   z-index: 10000 !important;
 }
+
+@media (min-width: 576px){
+   
+}
+
+@media (min-width: 992px){
+  
+}
+
+@media (min-width: 1200px) { 
+  
+}
+ 
+

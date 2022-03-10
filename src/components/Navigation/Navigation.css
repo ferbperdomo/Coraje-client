@@ -1,0 +1,12 @@
+.logo {
+    width: 15%;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+
+.navbar{
+background-color: #e290c9a8;
+}
+.navbar a {
+    text-decoration: none;
+}
