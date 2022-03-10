@@ -22,7 +22,7 @@ const Navigation = () => {
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <NavLink to="/">
-                        <Navbar.Brand as="span">MariconApp</Navbar.Brand>
+                        <Navbar.Brand as="span">Sekura</Navbar.Brand>
                     </NavLink>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
