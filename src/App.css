@@ -1,6 +1,9 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+img {
+  width: 100%;
+}
 
 .navbar-nav {
     display: flex;
@@ -10,6 +13,7 @@ body {
     list-style: none;
     align-items: end;
 }
+
 .nav-link{
     text-decoration: none;
 }
@@ -17,17 +21,84 @@ body {
 .pac-container {
   z-index: 10000 !important;
 }
-
-@media (min-width: 576px){
-   
+.homeContainer{
+  text-align: center;
+  padding: 10%;
+}
+.homeLogo{
+  width: 20%;
+  margin: 0 auto;
+  animation: homelogo 4s; 
 }
 
+@keyframes homelogo {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+
+.mainTitle{
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 5.5em;
+  padding-bottom: 10%;
+}
+.slogan {
+  font-size: 1.4em;
+  color: rgba(0,0,0,.55);
+  margin-bottom: 15%;
+}
+.logoContainer{
+  margin-bottom: 3%;
+}
+#introduction h2{
+  font-size: 1.7em;
+  margin-bottom: 10%;
+}
+
+#justification{
+  font-size: 1.3em;
+  background: linear-gradient(#edc3e82a, #f2cde791);
+  margin-bottom: 10%;
+  padding: 5%;
+}
+
+#justification img {
+  width: 15%;
+}
+
+.placesButton{
+  background-color: #f2cde791;
+  border: none;
+  font-size: 1.4em;
+  color: rgba(0,0,0,.55);
+}
+
+.placesButton:hover {
+    text-decoration: none;
+    color:#fdfdfd;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease
+}
+
+@media (min-width: 576px){
+   .slogan {
+  font-size: 1.2em;
+  }
+}
+@media (min-width: 768px){
+  .slogan {
+  font-size: 1.4em;
+  }
+}
 @media (min-width: 992px){
   
 }
 
 @media (min-width: 1200px) { 
-  
+  .homeLogo{
+  width: 18%;
+  }
 }
  
 

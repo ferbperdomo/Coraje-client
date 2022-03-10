@@ -3,10 +3,53 @@
     padding-right: 10px;
     margin-bottom: 5px;
 }
+.navbar-brand{
+    font-weight: 300;
+    font-size: 1.5em;
+    
+}
+.nav-link{
+font-size: 1.3em;
+}
+.navbar-light .navbar-brand {
+    color: rgba(0,0,0,.55);
+}
 
 .navbar{
-background-color: #e290c9a8;
+background: linear-gradient(#edc3e82a, #f2cde791);
+
 }
 .navbar a {
     text-decoration: none;
+}
+
+@media (min-width: 576px){
+   .logo {
+    width: 18%;
+}
+}
+@media (min-width: 768px){
+  .logo {
+    width: 13%;
+  }
+  .navbar-brand{
+    font-size: 1.8em;
+  }
+}
+@media (min-width: 992px){
+  .logo {
+    width: 19%;
+  }
+  .navbar-brand{
+    font-size: 1.9em;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .logo {
+    width: 18%;
+  }
+  .navbar-brand{
+    font-size: 2em;
+  }
 }

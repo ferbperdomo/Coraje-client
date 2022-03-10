@@ -1,15 +1,13 @@
-import { Container, Form, Button, FormControl } from "react-bootstrap"
+import { Container, Form, FormControl } from "react-bootstrap"
 import { LoadMap } from '../../components/Map/LoadMap'
 import placesService from '../../services/places.service'
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import Spinner from '../../components/Spinner/Spinner'
 
 const IndexPage = () => {
     const [places, setPlaces] = useState([])
     const [loading, setLoading] = useState(true)
     const [placesSearch, setPlacesSearch] = useState('')
-
-    const navigate = useNavigate()
 
     useEffect(() => {
         loadPlaces()
@@ -28,7 +26,6 @@ const IndexPage = () => {
 
     const handleInput = e => {
         setPlacesSearch(e.target.value)
-        navigate('/')
     }
 
     const handleSubmit = e => {
@@ -40,7 +37,8 @@ const IndexPage = () => {
             <>
                 {
                     loading
-                        ? <h1>Cargando</h1>
+                        ? <Spinner />
+
                         : <>
                             <Form className="d-flex mb-3 mt-5" onSubmit={handleSubmit}>
                                 <FormControl
@@ -55,23 +53,9 @@ const IndexPage = () => {
                                 placesSearch
                                     ?
                                     <LoadMap places={places} placeSearched={placesSearch} />
-                                    : <>
-                                        <section>
-                                            <article>
-
-                                                <p>¿Alguna vez te has sentido insegurx en un lugar por ser tal como eres?</p>
-                                                <p>Este lugar es para ti.</p>
-                                                <p>!Bienvenidx!</p>
-                                                <img src="https://res.cloudinary.com/ferbperdomo/image/upload/v1646904504/Coraje/coraje_trans_l_e2yfae.png" alt="coraje el perro cobarde" />
-
-                                            </article>
-                                        </section>
-                                        <section>
-                                            <article>
-                                                <p>Ante la violencia persistente que viven diariamente muchas personas de la  comunidad LGBTQ+, este proyecto nace ante la necesidad de brindar un espacio para buscar y/o registrar lugares seguros y amigables para nuestrxs miembrxs.</p>
-                                            </article>
-                                        </section>
-
+                                    :
+                                    <>
+                                        <h1>hola</h1>
                                     </>
                             }
                         </>

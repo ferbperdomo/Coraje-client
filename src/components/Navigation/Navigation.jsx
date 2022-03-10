@@ -20,18 +20,18 @@ const Navigation = () => {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" className='d-flex' >
+            <Navbar collapseOnSelect expand="lg" className='d-flex mb-5' >
                 <Container>
                     <Col>
-                        <img className='logo' src='https://res.cloudinary.com/ferbperdomo/image/upload/v1646905964/Coraje/coraje-logo_zxskff.png' alt='logo de Coraje' />
                         <NavLink to="/">
+                            <img className='logo' src='https://res.cloudinary.com/ferbperdomo/image/upload/v1646905964/Coraje/coraje-logo_zxskff.png' alt='logo de Coraje' />
                             <Navbar.Brand as="span">Coraje</Navbar.Brand>
                         </NavLink>
                     </Col>
                     <Col className=' d-flex me-auto justify-content-end'>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     </Col>
-                    <Navbar.Collapse id="responsive-navbar-nav">
+                    <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-end'>
                         <Nav>
                             {
                                 !isLoggedIn ?

@@ -19,9 +19,8 @@ function Map({ places, geoLocation }) {
             center={geoLocation}
             options={{ styles: mapStyles.purpleRain }}
             onClick={() => setActiveMarker(null)}
-
             mapContainerStyle={{ width: "85vw", height: "50vh" }}>
-            {places.map(({ _id, name, location }) => (
+            {places.map(({ _id, name, location, type }) => (
                 <Marker
                     key={_id}
                     position={
@@ -34,7 +33,7 @@ function Map({ places, geoLocation }) {
                     onClick={() => handleActiveMarker(_id)}>
                     {activeMarker === _id ? (
                         <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                            <div><Link to={`/detalles/${_id}`}>{name}</Link></div>
+                            <div><Link to={`/detalles/${_id}`}>{name}</Link><br />{type}</div>
                         </InfoWindow>
                     ) : null}
                 </Marker>
