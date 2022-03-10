@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
-import placesService from "../../services/places.service"
-import { Form, FormControl, Button, Container, Card, Row, Col } from 'react-bootstrap'
+import { Form, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
 import usersService from "../../services/users.service"
 import { Link, useNavigate } from "react-router-dom"
+import '../UsersListPage/UserList.css'
 
 const UserListPage = () => {
 
@@ -45,37 +45,29 @@ const UserListPage = () => {
             <Container className="userListPage">
                 <Form className="d-flex mb-3 mt-5" onSubmit={handleSubmit}>
                     <FormControl
+                        id="user-search"
                         type="search"
                         placeholder="Buscar amigxs"
-                        className="me-2"
                         aria-label="Search"
                         onChange={handleInput}
                     />
                 </Form >
 
-                <Row>
-                    {users.map(user => {
-                        return <Col>
-                            <Card style={{ width: '10rem' }}>
-                                <Card.Img variant="top" src={user.profileImg} />
-                                <Card.Body>
-                                    <Card.Title>{user.username}</Card.Title>
-                                    <Card.Text>
-                                        {user.description}
-                                    </Card.Text>
-                                    <Link to={`/perfil/${user._id}`}>
-                                        <Button variant="primary">Detalles</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
+                {users.map(user => {
+                    return <Row className="container-card" id="user-card">
+                        <Col xs={4} >
+                            <img src={user.profileImg} alt="Foto de perfil" />
                         </Col>
-                    })}
-                </Row>
+                        <Col xs={8} className="card-text">
+                            <h3>{user.username}</h3>
+                            <p>{user.description}</p>
+                            <Link to={`/perfil/${user._id}`}>Ir al perfil</Link>
+                        </Col>
+                    </Row>
+                })}
             </Container>
         </>
-
     )
-
 }
 
 export default UserListPage
