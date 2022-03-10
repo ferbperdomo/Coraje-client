@@ -1,0 +1,16 @@
+.notfound-page img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 50px auto;
+}
+
+.notfound-page {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.notfound-page h3 {
+    text-align: center;
+}

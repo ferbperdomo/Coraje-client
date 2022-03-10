@@ -1,0 +1,8 @@
+.friend-card img {
+    width: 35%;
+    height: 100px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 50%;
+}
+

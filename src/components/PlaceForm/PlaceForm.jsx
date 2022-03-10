@@ -1,10 +1,10 @@
+import '../PlaceForm/PlaceForm.css'
 import { useState, useContext } from "react"
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import uploadService from "../../services/upload.service"
 import placesService from "../../services/places.service"
 import { useNavigate } from 'react-router-dom'
 import Geocode from "react-geocode"
-// import GooglePlacesAutocomplete from "react-google-autocomplete"
 import { MessageContext } from './../../context/userMessage.context'
 Geocode.setApiKey(`${process.env.REACT_APP_MAPS_API_KEY}`)
 Geocode.setLanguage("es")
@@ -89,7 +89,6 @@ function CreatePlaceForm() {
     return (
         <Row className="justify-content-md-center">
             <Col md="auto">
-                <h2>Registra tu local :)</h2>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Nombre de tu local</Form.Label>
@@ -114,16 +113,12 @@ function CreatePlaceForm() {
                         <Form.Label>Añade la ubicación</Form.Label>
                         <Form.Control type="text" name="locationText" value={locationText} onChange={handleInputChange} />
                     </Form.Group>
-                    {/* <GooglePlacesAutocomplete
-                            apiKey={process.env.REACT_APP_MAPS_API_KEY}
-                            selectProps={{ name: "locationText", value: locationText, onChange: handleInputChange, type: "text" }}
-                        /> */}
                     <Form.Group className="mb-3">
                         <Form.Label>Sube una imagen del local</Form.Label>
                         <Form.Control type="file" onChange={uploadPlaceImage} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" disabled={loadingImage}>
-                        {loadingImage ? 'Rellena los datos :)' : 'Completar registro'}
+                    <Button className="form-button" type="submit" disabled={loadingImage}>
+                        {loadingImage ? 'Rellena los campos necesarios' : 'Completar registro'}
                     </Button>
                 </Form>
             </Col>

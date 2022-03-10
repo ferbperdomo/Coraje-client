@@ -25,7 +25,7 @@ const HomePage = () => {
 
             <section id="justification">
                 <article>
-                    <p>Ante la violencia persistente que viven diariamente muchas personas de la  comunidad LGBTQ+, este proyecto nace ante la necesidad de brindar un espacio para buscar y/o registrar lugares seguros y amigables para nuestrxs miembrxs.</p>
+                    <p>Ante la violencia persistente que viven diariamente muchas personas de la  comunidad LGBTQ+, este proyecto nace de la necesidad de brindar un espacio para buscar y/o registrar lugares seguros y amigables para nuestrxs miembrxs.</p>
                     <img className="coraje" src="https://res.cloudinary.com/ferbperdomo/image/upload/v1646904504/Coraje/coraje_trans_l_e2yfae.png" alt="coraje el perro cobarde" />
                 </article>
             </section>

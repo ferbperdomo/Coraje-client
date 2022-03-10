@@ -58,9 +58,11 @@ const UserListPage = () => {
                         <Col xs={4} >
                             <img src={user.profileImg} alt="Foto de perfil" />
                         </Col>
-                        <Col xs={8} className="card-text">
+                        <Col xs={6} className="card-text">
                             <h3>{user.username}</h3>
                             <p>{user.description}</p>
+                        </Col>
+                        <Col xs={2}>
                             <Link to={`/perfil/${user._id}`}>Ir al perfil</Link>
                         </Col>
                     </Row>

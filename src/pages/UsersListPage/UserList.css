@@ -16,14 +16,15 @@
     box-shadow: 0px 0px 5px rgba(243, 176, 243, 0.727);
 }
 
-a {
+.container-card a {
     text-decoration: none;
     text-align: center;
     color: #a538d0;
-    width: 80px;
+    width: 90px;
+    padding: 10px;
 }
 
-a:hover {
+.container-card a:hover {
     text-decoration: none;
     color:#fdfdfd;
     background-color: #dba1f2; 
@@ -50,11 +51,6 @@ a:hover {
     flex-direction: column;
     justify-content: start;
 }
-
-.form-control {
-    border-bottom: 1px solid rgb(157, 155, 155);
-}
-
 
 @media (min-width: 576px){
 

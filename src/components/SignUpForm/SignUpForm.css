@@ -1,0 +1,32 @@
+.modal-header{
+    background: linear-gradient(#ffecfc, #fae9ff);
+}
+
+.form-input {
+    box-shadow: none !important;
+    background-color: #ffecfc;
+    border: none;
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.398)
+    
+}
+
+.form-input:focus {
+    border-radius: 0 !important;
+}
+
+.form-button {
+    text-align: center;
+    color: #d36dfc;
+    background-color: white;
+    border: none;
+}
+
+.form-button:hover {
+    color:#ffecfc;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease;
+    border: none;
+
+}

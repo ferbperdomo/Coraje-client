@@ -1,3 +1,4 @@
+import '../UserProfilePage/UserProfilePage.css'
 import { AuthContext } from "../../context/auth.context"
 import { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
@@ -81,24 +82,24 @@ const UserProfilePage = () => {
                         user?._id === id || user?.role === "ADMIN" ?
                             <>
                                 <UserCard userInfo={userDetails} />
-                                <Link to='#' onClick={handleModalOpen}>
-                                    <Button>Editar información</Button>
-                                </Link>
-                                {user?.role === "ADMIN" && <Button variant="dark" type="submit" value="Submit" onClick={handleDeleteUser}>Eliminar usuario</Button>}
-                                {user?.role === "OWNER" && <Button variant="success" type="submit" value="Submit" onClick={handleRegisterModalOpen}>Añadir local</Button>}
+
+                                <Button className="profile-page-button" onClick={handleModalOpen}>Editar información de perfil</Button>
+
+                                {user?.role === "ADMIN" && <Button className="profile-page-button" type="submit" value="Submit" onClick={handleDeleteUser}>Eliminar usuarix</Button>}
+                                {user?.role === "OWNER" && <Button className="profile-page-button" type="submit" value="Submit" onClick={handleRegisterModalOpen}>Añadir local</Button>}
 
                             </>
                             :
                             <>
                                 <UserCard userInfo={userDetails} />
-                                {isMyFriend || <Button variant="primary" type="submit" value="Submit" onClick={handleAddFriend}>Agregar amigo</Button>}
-                                {isMyFriend && <Button variant="danger" type="submit" value="Submit" onClick={handleRemoveFriend}>Eliminar amigo</Button>}
+                                {isMyFriend || <Button className="profile-page-button" type="submit" value="Submit" onClick={handleAddFriend}>Agregar amigx</Button>}
+                                {isMyFriend && <Button className="profile-page-button" type="submit" value="Submit" onClick={handleRemoveFriend}>Eliminar amigx</Button>}
                             </>
                     }
                 </Row>
 
                 <Row>
-                    <h1>Lugares fav</h1>
+                    <h1>Sitios favoritos</h1>
                     {favPlaces?.map(place => {
                         return <Col md={6} key={place._id}> <PlacesCard favPlace={place} /> </Col>
                     })

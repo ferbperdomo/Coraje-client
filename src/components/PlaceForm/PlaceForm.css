@@ -1,0 +1,14 @@
+.form-button {
+    text-align: center;
+    color: #d36dfc;
+    background-color: white;
+    border: none;
+}
+
+.form-button:hover {
+    color:#ffecfc;
+    background-color: #dba1f2; 
+    border-radius: 2px;   
+    transition: .6s ease;
+    border: none;
+}

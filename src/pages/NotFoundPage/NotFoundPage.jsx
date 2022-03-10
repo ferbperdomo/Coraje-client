@@ -1,7 +1,17 @@
+import '../NotFoundPage/NotFoundPage.css'
+import { Row, Col } from 'react-bootstrap'
+
 const NotFoundPage = () => {
 
     return (
-        <h1>404 :(</h1>
+        <Row className='notfound-page'>
+            <Col>
+                <img src="showicon_courage.webp" />
+            </Col>
+            <Col>
+                <h3>Lo siento, no hemos encontrado esta página</h3>
+            </Col>
+        </Row>
     )
 }
 
