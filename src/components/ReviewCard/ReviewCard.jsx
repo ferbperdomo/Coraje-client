@@ -27,11 +27,9 @@ const ReviewCard = ({ review, loadReviews, placeId }) => {
                         <p>
                             {review.text}
                             <br />
-                            <br />
                             Puntuación: {review.rating}
                             <br />
-                            <br />
-                            Fecha :{review.date}
+                            {/* Fecha :{review.date} */}
                         </p>
                     </blockquote>
                 </Card.Body>
