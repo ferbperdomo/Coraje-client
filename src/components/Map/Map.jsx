@@ -30,9 +30,6 @@ function Map({ places, geoLocation }) {
                                 lng: parseFloat(location.coordinates[1])
                             }
                         }
-                        
-                        // icon= 'https://res.cloudinary.com/ferbperdomo/image/upload/v1646942473/Coraje/marker_havxsk.png'
-
                         onClick={() => handleActiveMarker(_id)}>
                         {activeMarker === _id ? (
                             <InfoWindow onCloseClick={() => setActiveMarker(null)}>
