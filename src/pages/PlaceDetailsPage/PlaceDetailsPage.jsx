@@ -109,19 +109,29 @@ const PlaceDetailsPage = () => {
                             </>
                             :
                             <>
-                                {!favorites.includes(id)
-                                    ? <Button className='place-button' type="submit" value="Submit" onClick={handleAddFavPlace}>Añadir a favoritos</Button>
-                                    : <Button className='place-button' type="submit" value="Submit" onClick={handleRemoveFavPlace}>Eliminar de favoritos</Button>}
-                                <Button className='place-button' onClick={handleTransOpen} > Añadir opinión </Button>
+                                {
+                                    user && favorites.includes(id)
 
-                                <Collapse in={openReview} className="collapse">
-                                    <div id="example-collapse-text">
-                                        <ReviewForm closeReview={handleTransClose} loadReviews={loadReviews} />
-                                    </div>
-                                </Collapse>
+                                        ? <Button className='place-button' type="submit" value="Submit" onClick={handleRemoveFavPlace}>Eliminar de favoritos</Button>
+                                        : <Button className='place-button' type="submit" value="Submit" onClick={handleAddFavPlace}>Añadir a favoritos</Button>
+                                }
+                                {
+                                    user ?
+                                        <>
+                                            <Button className='place-button' onClick={handleTransOpen} > Añadir opinión </Button>
+                                            <Collapse in={openReview} className="collapse">
+                                                <div id="example-collapse-text">
+                                                    <ReviewForm closeReview={handleTransClose} loadReviews={loadReviews} />
+                                                </div>
+                                            </Collapse>
+                                        </>
+                                        :
+                                        <Link to={'/'}>Registrate para añadir comentarios</Link>
+                                }
                                 {
                                     reviews.map(review => <ReviewCard review={review} key={review._id} loadReviews={loadReviews} placeId={id} />)
                                 }
+
                             </>
                     }
                 </Row>
