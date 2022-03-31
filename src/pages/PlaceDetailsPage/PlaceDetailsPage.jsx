@@ -26,10 +26,9 @@ const PlaceDetailsPage = () => {
 
     const [placeDetails, setPlaceDetails] = useState({})
     const [favorites, setFavorites] = useState([])
-    const [isFavorite, setIsFavorite] = useState(false)
     const [reviews, setReviews] = useState([])
 
-    const { name, type, description, image, location, url, owner } = placeDetails
+    const { name, type, description, image, url, owner } = placeDetails
 
     useEffect(() => {
         loadPlace()

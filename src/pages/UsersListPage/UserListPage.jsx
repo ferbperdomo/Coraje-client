@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Form, FormControl, Button, Container, Row, Col } from 'react-bootstrap'
+import { Form, FormControl, Container, Row, Col } from 'react-bootstrap'
 import usersService from "../../services/users.service"
 import { Link, useNavigate } from "react-router-dom"
 import '../UsersListPage/UserList.css'
@@ -7,7 +7,6 @@ import '../UsersListPage/UserList.css'
 const UserListPage = () => {
 
     const [users, setUsers] = useState([])
-    const [loading, setLoading] = useState(true)
     const [usersSearch, setUsersSearch] = useState('')
 
     const navigate = useNavigate()
@@ -41,20 +40,21 @@ const UserListPage = () => {
     }
 
     return (
-        <>
-            <Container className="userListPage">
-                <Form className="d-flex mb-3 mt-5" onSubmit={handleSubmit}>
-                    <FormControl
-                        id="user-search"
-                        type="search"
-                        placeholder="Buscar amigxs"
-                        aria-label="Search"
-                        onChange={handleInput}
-                    />
-                </Form >
+        <Container>
 
+            <Form className="d-flex mb-3 mt-5" onSubmit={handleSubmit}>
+                <FormControl
+                    id="user-search"
+                    type="search"
+                    placeholder="Buscar amigxs"
+                    aria-label="Search"
+                    onChange={handleInput}
+                />
+            </Form >
+
+            <Container className="userListPage">
                 {users.map(user => {
-                    return <Row className="container-card" id="user-card" key={user._id}>
+                    return <Row className="container-card justify-content-center" id="user-card" key={user._id}>
                         <Col xs={4} >
                             <img src={user.profileImg} alt="Foto de perfil" />
                         </Col>
@@ -67,8 +67,10 @@ const UserListPage = () => {
                         </Col>
                     </Row>
                 })}
+
             </Container>
-        </>
+        </Container>
+
     )
 }
 

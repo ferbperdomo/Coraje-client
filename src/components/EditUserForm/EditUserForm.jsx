@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import {  useParams } from "react-router-dom"
 import usersService from "../../services/users.service"
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import uploadService from "../../services/upload.service"

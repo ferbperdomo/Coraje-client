@@ -55,28 +55,32 @@
 }
 @media (min-width: 768px){
   .container-card img {
-    width: 50%;
+    width: 80%;
     height: 150px;
-    margin-left: 20%;
     }
     .container-card {
     font-size: 1.2em;
+    margin-left: 15%;
+    width: 70%;
     }
 }
 
 @media (min-width: 992px){
  .container-card img {
-    width: 50%;
     height: 160px;
     }
 }
 
 @media (min-width: 1200px) { 
   .container-card img {
-    width: 50%;
+    width: 70%;
     height: 200px;
     }
     .container-card a {
-        font-size: 1.3em;
+        font-size: 1em;
+    }
+    .container-card {
+    margin-left: 25%;
+    width: 50%;
     }
 }

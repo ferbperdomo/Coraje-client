@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     return (
         <Row className='notfound-page'>
             <Col>
-                <img src="showicon_courage.webp" />
+                <img src="showicon_courage.webp" alt='page not found' />
             </Col>
             <Col>
                 <h3>Lo siento, no hemos encontrado esta página</h3>

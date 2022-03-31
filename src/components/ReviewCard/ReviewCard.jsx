@@ -1,6 +1,5 @@
 import { Card, Button } from 'react-bootstrap'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import reviewsService from '../../services/review.service'
 
 

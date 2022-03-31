@@ -1,7 +1,7 @@
 import '../UserProfilePage/UserProfilePage.css'
 import { AuthContext } from "../../context/auth.context"
 import { useState, useEffect, useContext } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Col, Row, Button, Modal } from "react-bootstrap"
 import usersService from "../../services/users.service"
 import UserCard from "../../components/UserCard/UserCard"
